@@ -9,7 +9,7 @@ import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
 const HeaderRoot = styled('header')`
   align-items: center;
   background-color: ${colors.lightest};
-  border-bottom: 1px solid ${colors.brandLight};
+  // box-shadow: 0 -1px ${colors.gray} inset;
   box-sizing: border-box;
   display: ${props => (props.isCovered ? 'none' : 'flex')};
   height: ${dimensions.headerHeight};

@@ -19,8 +19,7 @@ import SiteMetadata from '../shared/SiteMetadata';
 import { logout, getUserInfo } from '../../utils/auth';
 import { breakpoints, spacing } from '../../utils/styles';
 
-// Import Futura PT typeface
-import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
+import '../../fonts/stylesheet.css';
 import gql from 'graphql-tag';
 
 injectGlobal`
@@ -402,13 +401,13 @@ export default class Layout extends React.Component {
                         productImagesBrowserStatus={productImagesBrowserStatus}
                       />
 
-                      <ContributorArea
+                      {/* <ContributorArea
                         location={location}
                         status={contributorAreaStatus}
                         toggle={toggleContributorArea}
                         isDesktopViewport={isDesktopViewport}
                         productImagesBrowserStatus={productImagesBrowserStatus}
-                      />
+                      /> */}
 
                       <PageContent
                         cartStatus={cartStatus}

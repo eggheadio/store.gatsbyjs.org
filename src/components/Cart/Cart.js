@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'react-emotion';
 import PropTypes from 'prop-types';
 
-import {
-  MdClose,
-  MdShoppingCart,
-  MdArrowBack,
-  MdArrowForward
-} from 'react-icons/md';
+import { MdClose, MdArrowBack, MdArrowForward } from 'react-icons/md';
+import { FiShoppingCart } from 'react-icons/fi';
 
 import StoreContext from '../../context/StoreContext';
 import CartList from './CartList';
@@ -231,16 +227,20 @@ const CartToggle = styled(Button)`
   position: relative;
   top: 0;
   transform: translateX(-100%);
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
   width: ${dimensions.headerHeight};
 
   :focus {
-    box-shadow: 0 0 0 1px ${colors.accent} inset;
+    // border: 1px solid ${colors.gray};
+    outline: none;
+    box-shadow: none;
+    background: ${colors.gray};
+    color: ${colors.brandDark};
   }
 
   .open & {
-    background: ${colors.lilac};
-    color: ${colors.lightest};
+    background: ${colors.gray};
+    color: ${colors.darkest};
     transform: translateX(0);
   }
 
@@ -356,7 +356,7 @@ class Cart extends Component {
                     <MdClose />
                   ) : (
                     <>
-                      <MdShoppingCart />
+                      <FiShoppingCart />
                       {itemsInCart > 0 && (
                         <ItemsNumber>{itemsInCart}</ItemsNumber>
                       )}

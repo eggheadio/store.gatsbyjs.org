@@ -22,7 +22,7 @@ const FooterRoot = styled('footer')`
     flex-wrap: wrap;
     justify-content: center;
     min-height: 50px;
-    padding: 0 ${spacing.xl}px 10px;
+    padding: 10px ${spacing.xl}px 10px;
   }
 `;
 
@@ -51,14 +51,7 @@ const Spacer = styled(`span`)`
 const Footer = () => (
   <FooterRoot>
     <Row>
-      <b>Got questions?&nbsp;</b>
-    </Row>
-    <Row>
-      Talk to us on Twitter <a href="https://twitter.com/gatsbyjs">@gatsbyjs</a>
-    </Row>
-    <Row>
-      &nbsp;or send an email to{' '}
-      <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
+      <b>egghead Swag Store&nbsp;</b>
     </Row>
     <Spacer>•</Spacer>
     <Row>

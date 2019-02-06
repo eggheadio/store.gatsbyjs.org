@@ -8,11 +8,11 @@ import ProductSpecs from './ProductSpecs';
 import ProductForm from './ProductForm';
 import BackLink from './BackLink';
 
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints, spacing, colors } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: ${spacing.md}px;
-
+  background: ${colors.gray};
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     display: flex;

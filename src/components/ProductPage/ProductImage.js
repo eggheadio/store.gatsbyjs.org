@@ -52,7 +52,7 @@ const ZoomHelper = styled(`span`)`
 
 export const StyledImage = styled(Image)`
   border-radius: ${radius.large}px;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+  // box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 `;
 
 class ProductImage extends Component {

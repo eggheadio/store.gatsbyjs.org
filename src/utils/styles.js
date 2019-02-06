@@ -9,22 +9,23 @@ import { keyframes } from 'react-emotion';
  *    border-color: ${colors.brand}40;
  */
 export const colors = {
-  brandDarker: '#221133',
-  brandDark: '#442266',
-  brand: '#663399',
-  brandBright: '#e0d6eb',
+  brandDarker: '#253748',
+  brandDark: '#253748',
+  brand: '#1F242A',
+  brandBright: '#DBEDFF',
   brandLight: '#f5f3f7',
-  brandLighter: '#fbfafc',
+  brandLighter: '#fafafa',
   lightest: '#ffffff',
-  darkest: '#4d4058',
-  text: '#333333',
+  darkest: '#1F242A',
+  text: '#253748',
   textMild: '#555555',
   textLight: '#7e718a',
   textLighter: '#aaaaaa',
   lilac: `#8c65b3`,
-  accent: `#ffb238`,
+  accent: `#96C0FF`,
   error: `#ec1818`,
-  lemon: `#ffdf37`
+  lemon: `#ffdf37`,
+  gray: `#f1f1f1`
 };
 
 export const badgeThemes = {
@@ -90,8 +91,8 @@ const monospaceFontStack = [
 ].join();
 
 export const fonts = {
-  body: defaultFontStack,
-  heading: `Futura PT, ${defaultFontStack}`,
+  body: `Inter Regular, ${defaultFontStack}`,
+  heading: `Inter Bold, ${defaultFontStack}`,
   monospace: monospaceFontStack
 };
 
@@ -100,8 +101,10 @@ export const dimensions = {
   cartWidthDesktop: '400px',
   contributorAreaWidth: {
     closedDesktop: '60px',
-    openDesktop: '340px',
-    openHd: '420px'
+    // openDesktop: '340px',
+    openDesktop: '0',
+    // openHd: '420px',
+    openHd: '0'
   },
   contributorAreaBarHeight: '50px',
   pictureBrowserAction: {

@@ -8,15 +8,9 @@ import ProductListingItem from './ProductListingItem';
 import { breakpoints, spacing } from '../../utils/styles';
 
 const ProductListingContainer = styled(`div`)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: ${spacing.lg}px;
-
   @media (min-width: ${breakpoints.desktop}px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: ${spacing['2xl']}px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 `;
 
@@ -57,7 +51,7 @@ const ProductListing = () => (
     `}
     render={({ products }) => (
       <>
-        <ProductListingHeader />
+        {/* <ProductListingHeader /> */}
         <ProductListingContainer>
           {products.edges.map(({ node: product }) => (
             <ProductListingItem key={product.id} product={product} />

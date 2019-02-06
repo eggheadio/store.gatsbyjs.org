@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
+
+import tee from '../../assets/tee-4.png';
 
 import { MdShoppingCart, MdArrowForward } from 'react-icons/md';
 import UserContext from '../../context/UserContext';
@@ -26,23 +28,25 @@ const TRANSITION_DURATION = '250ms';
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
-  border-radius: ${radius.large}px;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
-  margin-bottom: ${spacing.lg}px;
+  // border-radius: ${radius.large}px;
+  // box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+  // margin-bottom: ${spacing.lg}px;
   overflow: hidden;
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
+  border: 1px solid ${colors.gray};
 
   @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
     margin-right: auto;
-    max-width: 500px;
+    // max-width: 500px;
+    width: 100%;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
     flex-basis: 300px;
     justify-content: center;
-    margin: ${spacing.md * 1.25}px;
+    // margin: ${spacing.md * 1.25}px;
   }
 
   @media (hover: hover) {
@@ -60,20 +64,24 @@ const Item = styled(`article`)`
 `;
 
 const Preview = styled(`div`)`
-  border-bottom: 1px solid ${colors.brandLight};
-  border-radius: ${radius.large}px ${radius.large}px 0 0;
+padding-top: 40px;
+  // border-bottom: 1px solid ${colors.brandLight};
+  // border-radius: ${radius.large}px ${radius.large}px 0 0;
   margin: -${spacing.lg}px;
   margin-bottom: ${spacing.lg}px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .gatsby-image-wrapper {
+  .gatsby-image-wrapper, img {
     transition: all ${TRANSITION_DURATION};
   }
 
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
-      .gatsby-image-wrapper {
+      .gatsby-image-wrapper, img {
         transform: scale(1.1);
       }
     }
@@ -117,18 +125,22 @@ const CodeEligibility = styled(`div`)`
 `;
 
 const Name = styled(`h1`)`
-  color: ${colors.brandDark};
-  font-family: ${fonts.heading};
-  font-size: 1.6rem;
+  color: ${colors.darkest};
+  font-family: ${fonts.body};
+  font-size: 1.4rem;
   line-height: 1.2;
   margin: 0;
+  margin-top: 10px;
+  text-align: center;
 `;
 
 const Description = styled(`p`)`
   color: ${colors.text};
   flex-grow: 1;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.5;
+  text-align: center;
+  margin-bottom: 0;
 `;
 
 const PriceRow = styled(`div`)`
@@ -145,13 +157,13 @@ const Price = styled(`div`)`
   letter-spacing: -0.02em;
 
   span {
-    color: ${colors.textLight};
+    color: ${colors.textLighter};
   }
 `;
 
 const Incentive = styled('div')`
   align-items: center;
-  color: ${colors.lilac};
+  color: ${colors.textLighter};
   display: flex;
   font-size: 0.9rem;
   line-height: 1.3;
@@ -177,7 +189,7 @@ const Incentive = styled('div')`
 
 const CartIcon = styled(`span`)`
   align-items: center;
-  background: ${colors.lilac};
+  background: ${colors.gray};
   border-radius: ${radius.default}px 0 0 ${radius.default}px;
   display: flex;
   height: 40px;
@@ -195,7 +207,7 @@ const CartIcon = styled(`span`)`
   }
 
   svg {
-    color: ${colors.accent};
+    color: ${colors.brand};
     height: 22px;
     position: relative;
     width: 22px;
@@ -244,7 +256,15 @@ const ProductListingItem = props => {
           <ProductListingItemLink to={`/product/${handle}`}>
             <Item>
               <Preview>
-                <Image fluid={fluid} />
+                {/* this is a placholder product image */}
+                <img
+                  src={tee}
+                  className={css`
+                    max-width: 320px;
+                  `}
+                />
+                {/* this is a real one from shopify /*} 
+                  {/* <Image fluid={fluid} /> */}
                 {checkEligibility({
                   freeWith,
                   contributor

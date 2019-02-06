@@ -11,7 +11,7 @@ export const ButtonBase = styled(`button`)`
   border: 1px solid
     ${props => (props.inverse ? colors.brandLight : colors.brand)};
   border-radius: ${radius.default}px;
-  color: ${props => (props.inverse ? colors.brandLight : colors.brand)};
+  color: ${props => (props.inverse ? colors.brandLight : colors.darkest)};
   cursor: pointer;
   display: inline-flex;
   font-family: ${fonts.heading};
@@ -35,7 +35,7 @@ export const ButtonBase = styled(`button`)`
 
   @media (hover: hover) {
     &:hover {
-      box-shadow: 0 0 0 1px ${colors.accent};
+      // box-shadow: 0 0 0 1px ${colors.accent};
     }
   }
 `;
