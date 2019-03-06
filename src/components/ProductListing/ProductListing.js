@@ -20,41 +20,41 @@ const ProductListingContainer = styled(`div`)`
   }
 `;
 
-const ProductListing = () => (
-  <StaticQuery
-    query={graphql`
-      query ProductListingQuery {
-        products: allShopifyProduct(
-          sort: { fields: [publishedAt], order: ASC }
-        ) {
-          edges {
-            node {
-              id
-              handle
-              title
-              description
-              productType
-              variants {
-                shopifyId
-                title
-                price
-                availableForSale
-              }
-              images {
-                id
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 910, maxHeight: 910) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
+const query = graphql`
+  query ProductListingQuery {
+    products: allShopifyProduct(sort: { fields: [publishedAt], order: ASC }) {
+      edges {
+        node {
+          id
+          handle
+          title
+          description
+          productType
+          variants {
+            shopifyId
+            title
+            price
+            availableForSale
+          }
+          images {
+            id
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 910, maxHeight: 910) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
           }
         }
       }
-    `}
+    }
+  }
+`;
+
+const ProductListing = () => (
+  <StaticQuery
+    query={query}
     render={({ products }) => (
       <>
         <ProductListingHeader />

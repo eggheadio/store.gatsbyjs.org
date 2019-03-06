@@ -54,21 +54,8 @@ const Footer = () => (
       <b>Got questions?&nbsp;</b>
     </Row>
     <Row>
-      Talk to us on Twitter <a href="https://twitter.com/gatsbyjs">@gatsbyjs</a>
-    </Row>
-    <Row>
-      &nbsp;or send an email to{' '}
-      <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
-    </Row>
-    <Spacer>•</Spacer>
-    <Row>
-      Built with 💜 by the{' '}
-      <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
-    </Row>
-    <Spacer>•</Spacer>
-    <Row>
-      See the source code on{' '}
-      <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
+      Talk to us on Twitter{' '}
+      <a href="https://twitter.com/eggheadio">@eggheadio</a>
     </Row>
   </FooterRoot>
 );

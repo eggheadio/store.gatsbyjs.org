@@ -202,20 +202,6 @@ const CartIcon = styled(`span`)`
   }
 `;
 
-const checkEligibility = ({ contributor, freeWith }) => {
-  const { shopify } = contributor;
-
-  let eligibleCodes = [];
-
-  if (shopify && shopify.codes) {
-    eligibleCodes = shopify.codes.filter(
-      code => code.code === freeWith && code.used === false
-    );
-  }
-
-  return eligibleCodes.length ? true : false;
-};
-
 const ProductListingItem = props => {
   const {
     product: {
@@ -239,24 +225,12 @@ const ProductListingItem = props => {
 
   return (
     <UserContext.Consumer>
-      {({ contributor }) => {
+      {() => {
         return (
           <ProductListingItemLink to={`/product/${handle}`}>
             <Item>
               <Preview>
                 <Image fluid={fluid} />
-                {checkEligibility({
-                  freeWith,
-                  contributor
-                }) && (
-                  <CodeEligibility freeWith={freeWith}>
-                    <span>free with </span>
-                    <span>
-                      Code Swag Level
-                      {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                    </span>
-                  </CodeEligibility>
-                )}
               </Preview>
               <Name>{title}</Name>
               <Description>

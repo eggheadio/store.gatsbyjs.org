@@ -6,7 +6,7 @@ import Footer from './Footer';
 import { breakpoints, dimensions, animations } from '../../utils/styles';
 
 const {
-  contributorAreaWidth: {
+  desktopAreaWidth: {
     openDesktop: desktopMaxWidth,
     openHd: hdMaxWidth,
     closedDesktop: desktopMinWidth
@@ -53,8 +53,7 @@ const PageContentRoot = styled(`main`)`
   }
 
   @media (min-width: ${breakpoints.hd}px) {
-    padding-left: ${props =>
-      props.contributorAreaStatus === 'closed' ? desktopMinWidth : hdMaxWidth};
+    padding-left: ${desktopMinWidth};
   }
 `;
 
@@ -81,8 +80,6 @@ class PageContent extends Component {
     const imageBrowserStatusChanged =
       this.props.productImagesBrowserStatus !==
       prevProps.productImagesBrowserStatus;
-    const contributorAreaStatusChanged =
-      prevProps.contributorAreaStatus !== this.props.contributorAreaStatus;
     const cartStatusChanged = prevProps.cartStatus !== this.props.cartStatus;
 
     if (this.props.isDesktopViewport) {
@@ -100,24 +97,6 @@ class PageContent extends Component {
         }
       }
 
-      if (contributorAreaStatusChanged) {
-        if (this.props.contributorAreaStatus === 'closed') {
-          this.setState(state => ({
-            className:
-              this.props.contributorAreaStatus !== 'open'
-                ? state.className + ' wide'
-                : state.className
-          }));
-        } else {
-          this.setState(state => ({
-            className:
-              state.className !== 'open'
-                ? state.className.replace('wide', '')
-                : state.className
-          }));
-        }
-      }
-
       if (cartStatusChanged) {
         if (this.props.cartStatus === 'open') {
           this.setState(state => ({
@@ -130,13 +109,9 @@ class PageContent extends Component {
         }
       }
     } else {
-      if (contributorAreaStatusChanged || cartStatusChanged) {
+      if (cartStatusChanged) {
         this.setState({
-          className:
-            this.props.contributorAreaStatus === 'open' ||
-            this.props.cartStatus === 'open'
-              ? 'covered'
-              : ''
+          className: this.props.cartStatus === 'open' ? 'covered' : ''
         });
       }
     }
@@ -169,7 +144,6 @@ class PageContent extends Component {
 PageContent.propTypes = {
   cartStatus: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  contributorAreaStatus: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   productImagesBrowserStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool

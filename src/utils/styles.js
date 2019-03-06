@@ -98,12 +98,11 @@ export const fonts = {
 export const dimensions = {
   headerHeight: '60px',
   cartWidthDesktop: '400px',
-  contributorAreaWidth: {
+  desktopAreaWidth: {
     closedDesktop: '60px',
     openDesktop: '340px',
     openHd: '420px'
   },
-  contributorAreaBarHeight: '50px',
   pictureBrowserAction: {
     widthDesktop: '200px',
     heightMobile: '80px'

@@ -1,8 +1,6 @@
 import React from 'react';
 import styled, { injectGlobal } from 'react-emotion';
-import { navigate } from 'gatsby';
 
-import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
 import UserContext, { defaultUserContext } from '../../context/UserContext';
 import InterfaceContext, {
@@ -10,18 +8,15 @@ import InterfaceContext, {
 } from '../../context/InterfaceContext';
 
 import Header from './Header';
-import ContributorArea from '../ContributorArea';
 import PageContent from './PageContent';
 import ProductImagesBrowser from '../ProductPage/ProductImagesBrowser';
 import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
-import { logout, getUserInfo } from '../../utils/auth';
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
-import gql from 'graphql-tag';
 
 injectGlobal`
     html {
@@ -52,11 +47,7 @@ export default class Layout extends React.Component {
         this.setState(state => ({
           interface: {
             ...state.interface,
-            contributorAreaStatus:
-              state.interface.isDesktopViewport === false &&
-              state.interface.contributorAreaStatus === 'open'
-                ? 'closed'
-                : state.interface.contributorAreaStatus,
+
             cartStatus:
               this.state.interface.cartStatus === 'open' ? 'closed' : 'open'
           }
@@ -89,36 +80,10 @@ export default class Layout extends React.Component {
             productImageFeatured: null
           }
         }));
-      },
-      toggleContributorArea: () => {
-        this.setState(state => ({
-          interface: {
-            ...state.interface,
-            contributorAreaStatus: this.toggleContributorAreaStatus()
-          }
-        }));
       }
     },
     user: {
-      ...defaultUserContext,
-      handleLogout: () => {
-        this.setState({
-          user: {
-            ...defaultUserContext,
-            loading: false
-          }
-        });
-        logout(() => navigate('/'));
-      },
-      updateContributor: data => {
-        this.setState(state => ({
-          user: {
-            ...state.user,
-            contributor: data,
-            loading: false
-          }
-        }));
-      }
+      ...defaultUserContext
     },
     store: {
       ...defaultStoreContext,
@@ -225,51 +190,6 @@ export default class Layout extends React.Component {
     setCheckoutInState(newCheckout);
   }
 
-  async loadContributor(nickname) {
-    try {
-      const { data } = await client.mutate({
-        mutation: gql`
-          mutation($user: String!) {
-            updateContributorTags(githubUsername: $user) {
-              email
-              github {
-                username
-                contributionCount
-                pullRequests {
-                  id
-                }
-              }
-              shopify {
-                id
-                codes {
-                  code
-                  used
-                }
-              }
-            }
-          }
-        `,
-        variables: { user: nickname }
-      });
-
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          contributor: data.updateContributorTags,
-          loading: false
-        }
-      }));
-    } catch (error) {
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          error: error.toString(),
-          loading: false
-        }
-      }));
-    }
-  }
-
   componentDidMount() {
     // Observe viewport switching from mobile to desktop and vice versa
     const mediaQueryToMatch = `(min-width: ${breakpoints.desktop}px)`;
@@ -281,34 +201,6 @@ export default class Layout extends React.Component {
 
     // Make sure we have a Shopify checkout created for cart management.
     this.initializeCheckout();
-
-    // Mounting Layout on 'callback' page triggers user 'loading' flag
-    if (this.props.location.pathname === '/callback/') {
-      this.setState(state => ({
-        user: { ...state.user, loading: true }
-      }));
-    }
-
-    // Make sure to set user.profile when a visitor reloads the app
-    if (this.props.location.pathname !== '/callback/') {
-      this.setUserProfile();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    // Set user.profile after redirection from '/callback/' to '/'
-    if (
-      prevProps.location.pathname !== this.props.location.pathname &&
-      prevProps.location.pathname === '/callback/'
-    ) {
-      this.setState(state => ({
-        interface: {
-          ...state.interface,
-          contributorAreaStatus: 'open'
-        }
-      }));
-      this.setUserProfile();
-    }
   }
 
   componentWillUnmount = () => {
@@ -324,25 +216,6 @@ export default class Layout extends React.Component {
     }));
   };
 
-  setUserProfile = async () => {
-    // Load the user info from Auth0.
-    const profile = await getUserInfo();
-
-    // If logged in set user.profile
-    if (profile.nickname) {
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          profile,
-          loading: true
-        }
-      }));
-
-      // and load the contributor data
-      this.loadContributor(profile.nickname);
-    }
-  };
-
   componentWillUnmount() {
     this.desktopMediaQuery.removeListener(this.updateViewPortState);
   }
@@ -354,16 +227,6 @@ export default class Layout extends React.Component {
         isDesktopViewport: this.desktopMediaQuery.matches
       }
     }));
-  };
-
-  toggleContributorAreaStatus = () => {
-    if (this.state.interface.contributorAreaStatus === 'initial') {
-      return this.state.interface.isDesktopViewport ? 'closed' : 'open';
-    } else {
-      return this.state.interface.contributorAreaStatus === 'closed'
-        ? 'open'
-        : 'closed';
-    }
   };
 
   render() {
@@ -380,8 +243,6 @@ export default class Layout extends React.Component {
                   isDesktopViewport,
                   cartStatus,
                   toggleCart,
-                  contributorAreaStatus,
-                  toggleContributorArea,
                   productImagesBrowserStatus,
                   currentProductImages,
                   featureProductImage,
@@ -398,21 +259,11 @@ export default class Layout extends React.Component {
                         isDesktopViewport={isDesktopViewport}
                         status={cartStatus}
                         toggle={toggleCart}
-                        contributorAreaStatus={contributorAreaStatus}
-                        productImagesBrowserStatus={productImagesBrowserStatus}
-                      />
-
-                      <ContributorArea
-                        location={location}
-                        status={contributorAreaStatus}
-                        toggle={toggleContributorArea}
-                        isDesktopViewport={isDesktopViewport}
                         productImagesBrowserStatus={productImagesBrowserStatus}
                       />
 
                       <PageContent
                         cartStatus={cartStatus}
-                        contributorAreaStatus={contributorAreaStatus}
                         isDesktopViewport={isDesktopViewport}
                         productImagesBrowserStatus={productImagesBrowserStatus}
                         location={location}

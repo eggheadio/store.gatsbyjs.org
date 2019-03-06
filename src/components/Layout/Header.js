@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
-import Logo from './Logo';
 
 import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
 
@@ -69,7 +68,7 @@ class Header extends Component {
     return (
       <HeaderRoot className={className}>
         <HomeLink to="/" aria-label="Home page">
-          <Logo />
+          <h1>egghead swag store</h1>
         </HomeLink>
       </HeaderRoot>
     );

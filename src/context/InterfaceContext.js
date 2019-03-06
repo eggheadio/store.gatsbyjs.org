@@ -9,9 +9,7 @@ export const defaultInterfaceContext = {
   currentProductImages: [],
   setCurrentProductImages: () => {},
   productImagesBrowserStatus: 'initial',
-  toggleProductImagesBrowser: () => {},
-  contributorAreaStatus: 'initial',
-  toggleContributorArea: () => {}
+  toggleProductImagesBrowser: () => {}
 };
 
 export default React.createContext(defaultInterfaceContext);

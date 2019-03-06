@@ -4,10 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://store.gatsbyjs.org',
-    title: 'Holy buckets! Get your Gatsby swag here!',
-    description:
-      'Do you like spaced-out socks? All purple everything? Hitting #maximumcomf with JAMstack Jammies? Oh boy have we got the swag store for you!'
+    siteUrl: 'https://store.egghead.io',
+    title: 'the egghead.io swag store',
+    description: 'Buy egghead swag'
   },
   plugins: [
     {
@@ -20,7 +19,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-shopify',
       options: {
-        shopName: 'gatsby-swag',
+        shopName: process.env.SHOPIFY_STORE_NAME,
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN
       }
     },
@@ -29,8 +28,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Gatsby Store',
-        short_name: 'Gatsby Store',
+        name: 'egghead Store',
+        short_name: 'egghead Store',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#663399',
@@ -38,13 +37,6 @@ module.exports = {
         icon: 'static/android-chrome-512x512.png'
       }
     },
-    'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-93349937-6',
-        respectDNT: true
-      }
-    }
+    'gatsby-plugin-offline'
   ]
 };

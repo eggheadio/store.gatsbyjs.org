@@ -13,7 +13,6 @@ import StoreContext from '../../context/StoreContext';
 import CartList from './CartList';
 import CartIndicator from './CartIndicator';
 import EmptyCart from './EmptyCart';
-import FreeBonus from './FreeBonus';
 import ShippingInfo from './ShippingInfo';
 import { Button, PrimaryButton } from '../shared/Buttons';
 
@@ -407,7 +406,6 @@ class Cart extends Component {
                     Back to shopping
                   </BackLink>
 
-                  <FreeBonus />
                   <ShippingInfo />
                 </Content>
               ) : (
@@ -424,7 +422,6 @@ class Cart extends Component {
 Cart.propTypes = {
   status: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  contributorAreaStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool,
   productImagesBrowserStatus: PropTypes.string
 };

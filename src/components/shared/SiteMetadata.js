@@ -35,7 +35,7 @@ export default () => (
         <html lang="en" />
         <body className={bodyStyles} />
 
-        <link rel="preconnect" href="https://gatsby-swag.myshopify.com" />
+        <link rel="preconnect" href="https://eggheadio.myshopify.com" />
         <link rel="preconnect" href="https://api.gatsbyjs.org" />
 
         <link rel="canonical" href={siteUrl} />
