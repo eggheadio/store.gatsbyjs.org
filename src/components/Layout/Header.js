@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
 import Eggo from '../../assets/eggo.svg';
+import PartyEggo from '../../assets/eggo-party.png';
+import GlassesEggo from '../../assets/eggo-glasses.png';
+import PilotEggo from '../../assets/eggo-pilot.png';
+import TamagotchiEggo from '../../assets/eggo-tamagotchi.png';
+import WorkerEggo from '../../assets/eggo-worker.png';
+import { sample } from 'lodash';
 
 import {
   breakpoints,
@@ -38,12 +44,12 @@ const HeaderRoot = styled('header')`
 const HomeLink = styled(Link)`
   display: flex;
   align-items: center;
-  //display: block;
   flex-shrink: 0;
   text-transform: uppercase;
   text-decoration: none;
   color: ${colors.text};
   margin-right: auto;
+  height: 100%;
   h1 {
     font-size: 1.3em;
     letter-spacing: 0.02em;
@@ -53,7 +59,7 @@ const HomeLink = styled(Link)`
   line-height: 1;
   margin: 0;
   img {
-    margin-right: ${spacing.sm}px;
+    padding-right: ${spacing.sm}px;
   }
 `;
 
@@ -85,12 +91,31 @@ class Header extends Component {
   }
 
   render() {
-    const { className } = this.state;
-
+    const { className, logo = `${Eggo}` } = this.state;
+    const eggos = {
+      1: `${PartyEggo}`,
+      2: `${PilotEggo}`,
+      3: `${GlassesEggo}`,
+      4: `${TamagotchiEggo}`,
+      5: `${WorkerEggo}`
+    };
     return (
       <HeaderRoot className={className}>
-        <HomeLink to="/" aria-label="Home page">
-          <img src={Eggo} alt="egghead swag store" />
+        <HomeLink
+          to="/"
+          aria-label="Home page"
+          onMouseOver={() => {
+            this.setState({
+              logo: `${sample(eggos)}`
+            });
+          }}
+          onMouseOut={() => {
+            this.setState({
+              logo: `${Eggo}`
+            });
+          }}
+        >
+          <img src={logo} height="44" alt="egghead swag store" />
           <h1>swag store</h1>
         </HomeLink>
       </HeaderRoot>
