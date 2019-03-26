@@ -57,9 +57,9 @@ export default () => (
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#663399" />
-        <meta name="msapplication-TileColor" content="#663399" />
-        <meta name="theme-color" content="#663399" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0091FF" />
+        <meta name="msapplication-TileColor" content="#0091FF" />
+        <meta name="theme-color" content="#0091FF" />
 
         <meta name="description" content={description} />
 
@@ -70,19 +70,13 @@ export default () => (
         <meta property="og:site_name" content={title} />
         <meta property="og:description" content={description} />
 
-        <meta
-          property="og:image"
-          content={`${siteUrl}/instagram-doraforscale.jpg`}
-        />
-        <meta
-          property="og:image:alt"
-          content="Gatsby Socks using Dora for scale."
-        />
+        <meta property="og:image" content={`${siteUrl}/meta.jpg`} />
+        <meta property="og:image:alt" content="egghead.io Swag Store." />
         <meta property="og:image:width" content="1280" />
         <meta property="og:image:height" content="686" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@gatsbyjs" />
+        <meta name="twitter:site" content="@eggheadio" />
       </Helmet>
     )}
   />

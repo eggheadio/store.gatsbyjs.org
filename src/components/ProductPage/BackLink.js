@@ -25,9 +25,24 @@ const BackLinkRoot = styled(`div`)`
   left: 0;
   padding: ${spacing.md}px;
   padding-top: ${spacing.lg}px;
+  display: flex;
+  justify-content: center;
+  svg {
+    margin-bottom: 2px;
+  }
+  span {
+    margin-top: 2px;
+  }
   position: fixed;
   width: 100%;
-
+  transition: opacity 250ms;
+  @media (hover: hover) {
+    opacity: 0.6;
+    :hover {
+      opacity: 1;
+    }
+  }
+  opacity: 0.8;
   @media (min-width: ${breakpoints.desktop}px) {
     padding: 0 ${spacing.xl}px;
     position: relative;
@@ -36,7 +51,8 @@ const BackLinkRoot = styled(`div`)`
 
 const BackToListing = styled(Button)`
   width: 100%;
-
+  border: transparent;
+  padding: 0;
   @media (min-width: ${breakpoints.desktop}px) {
     width: auto;
   }
@@ -45,7 +61,7 @@ const BackToListing = styled(Button)`
 const BackLink = ({ children, className }) => (
   <BackLinkRoot className={className}>
     <BackToListing to="/">
-      <MdArrowBack /> {children}
+      <MdArrowBack /> <span>{children}</span>
     </BackToListing>
   </BackLinkRoot>
 );

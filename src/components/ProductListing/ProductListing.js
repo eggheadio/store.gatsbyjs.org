@@ -8,16 +8,24 @@ import ProductListingItem from './ProductListingItem';
 import { breakpoints, spacing } from '../../utils/styles';
 
 const ProductListingContainer = styled(`div`)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: ${spacing.lg}px;
 
-  @media (min-width: ${breakpoints.desktop}px) {
+   display: flex;
+   justify-content: center;
+   padding: ${spacing.lg}px;
+   flex-direction: column;
+
+   @media (min-width: ${breakpoints.tablet}px) {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: ${spacing['2xl']}px;
+   }
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    
+    flex-direction: row;
+    flex-wrap: wrap;
+    // padding: ${spacing['2xl']}px;
   }
+
 `;
 
 const query = graphql`
@@ -41,7 +49,7 @@ const query = graphql`
             localFile {
               childImageSharp {
                 fluid(maxWidth: 910, maxHeight: 910) {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }
@@ -57,7 +65,7 @@ const ProductListing = () => (
     query={query}
     render={({ products }) => (
       <>
-        <ProductListingHeader />
+        {/* <ProductListingHeader /> */}
         <ProductListingContainer>
           {products.edges.map(({ node: product }) => (
             <ProductListingItem key={product.id} product={product} />

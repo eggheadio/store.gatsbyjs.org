@@ -13,10 +13,10 @@ const ProductListingHeaderRoot = styled(`header`)`
 `;
 
 const Title = styled(`h1`)`
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: 2.4rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   line-height: 1;
   margin: 0;
   margin-top: ${spacing.md}px;

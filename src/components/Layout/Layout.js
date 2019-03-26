@@ -17,6 +17,7 @@ import { breakpoints } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
+import '../../fonts/din/din.css';
 
 injectGlobal`
     html {
@@ -29,6 +30,9 @@ injectGlobal`
 
     body {
       -webkit-tap-highlight-color: rgba(0,0,0,.05)
+    }
+    h1 {
+      text-transform: uppercase;
     }
 `;
 

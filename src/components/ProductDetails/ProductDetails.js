@@ -92,7 +92,7 @@ class ProductDetails extends React.Component {
             <strong style={{ color: colors.brand }}>
               Don’t see your size?
             </strong>{' '}
-            Send us an email team@gatsbyjs.com and we’ll see if we can help!
+            Send us an email support@egghead.io and we’ll see if we can help!
           </p>
         </Section>
       </TextContainer>

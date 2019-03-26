@@ -8,6 +8,7 @@ const FooterRoot = styled('footer')`
   color: ${colors.textMild};
   display: flex;
   flex-direction: column;
+
   font-size: 0.85rem;
   padding: ${spacing.md}px;
   padding-bottom: calc(${spacing.xl}px + 50px);
@@ -50,12 +51,9 @@ const Spacer = styled(`span`)`
 
 const Footer = () => (
   <FooterRoot>
+    <Row>Got questions?&nbsp;</Row>
     <Row>
-      <b>Got questions?&nbsp;</b>
-    </Row>
-    <Row>
-      Talk to us on Twitter{' '}
-      <a href="https://twitter.com/eggheadio">@eggheadio</a>
+      <a href="mailto:support@egghead.io">support@egghead.io</a>
     </Row>
   </FooterRoot>
 );

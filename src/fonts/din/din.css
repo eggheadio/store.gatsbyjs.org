@@ -1,0 +1,105 @@
+@import url('http://fast.fonts.net/t/1.css?apiType=css&projectid=d75f2208-02cf-4b68-9bfa-77c87386fe17');
+@font-face {
+  font-family: 'DIN Next LT W01 Light';
+  src: url('./fb0dd5e6-cf57-43be-8f3f-2880d5389694.eot?#iefix');
+  src: url('./fb0dd5e6-cf57-43be-8f3f-2880d5389694.eot?#iefix') format('eot'),
+    url('./14aba99e-8c97-4daa-a8df-67920a051402.woff2') format('woff2'),
+    url('./96fd6d6f-fad6-4dd9-ab70-29547a56cacd.woff') format('woff'),
+    url('./cdc1c0e4-213b-4a01-a1dc-af6dddf2263a.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Light Italic';
+  src: url('./a819beca-e31b-40b3-bc54-23a8a4a8444d.eot?#iefix');
+  src: url('./a819beca-e31b-40b3-bc54-23a8a4a8444d.eot?#iefix') format('eot'),
+    url('./432c9e2a-ea2e-479f-8920-a944904adff2.woff2') format('woff2'),
+    url('./a062545d-8a1d-4a8c-88ce-48870c7cb3ca.woff') format('woff'),
+    url('./e157e6e0-4dd1-4632-9846-e2534d9e08d0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Italic';
+  src: url('./43545a34-77fc-4613-a2ba-eb1f06bdfd5e.eot?#iefix');
+  src: url('./43545a34-77fc-4613-a2ba-eb1f06bdfd5e.eot?#iefix') format('eot'),
+    url('./e8258209-d292-4480-9fe3-b30dfa63ea97.woff2') format('woff2'),
+    url('./c3cbbafb-1878-424d-b2f5-b176d0f9b370.woff') format('woff'),
+    url('./099f3b78-1eec-4286-a243-a204d96fec0b.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Medium';
+  src: url('./c6dbdd54-50f5-472a-8b74-0e98ef77e33e.eot?#iefix');
+  src: url('./c6dbdd54-50f5-472a-8b74-0e98ef77e33e.eot?#iefix') format('eot'),
+    url('./afabdfcf-432c-49b4-a496-0e5051e87fa9.woff2') format('woff2'),
+    url('./611ea865-db7e-4c05-94b8-bd1675c90576.woff') format('woff'),
+    url('./e65314e4-c389-45b8-99a9-26ab6aef066c.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Medium Italic';
+  src: url('./d181cd2c-c18f-40b3-8015-ac0d8be14b05.eot?#iefix');
+  src: url('./d181cd2c-c18f-40b3-8015-ac0d8be14b05.eot?#iefix') format('eot'),
+    url('./e7938824-19f4-4f10-a2f1-a0bf5f7ab502.woff2') format('woff2'),
+    url('./34afc1f7-a48d-4091-83dc-cd888e3d0df8.woff') format('woff'),
+    url('./aaa4548c-32c0-4f02-b77c-0643beb254cd.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Bold';
+  src: url('./fa5ed46b-792d-4f47-894e-fa587cf4e1cf.eot?#iefix');
+  src: url('./fa5ed46b-792d-4f47-894e-fa587cf4e1cf.eot?#iefix') format('eot'),
+    url('./03008527-67bd-478e-98e3-3b56dd9a6520.woff2') format('woff2'),
+    url('./557f817d-9c25-4a23-baaf-a3cf84a7cd7c.woff') format('woff'),
+    url('./92ed1479-1d40-4a94-8baf-6abd88b17afa.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Bold Italic';
+  src: url('./c7856406-b320-4e5b-9164-4d8189fa62dd.eot?#iefix');
+  src: url('./c7856406-b320-4e5b-9164-4d8189fa62dd.eot?#iefix') format('eot'),
+    url('./a6eb0ff6-9fe2-47b1-947e-fe6d477fea22.woff2') format('woff2'),
+    url('./194d1c66-dc36-4c21-90af-3fe62de2fc02.woff') format('woff'),
+    url('./fde4eb42-4987-45b3-85d5-634e80fa1701.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DINNextW01-CondensedReg';
+  src: url('./6fa09720-5b0e-48a5-8895-5af8af928c01.eot?#iefix');
+  src: url('./6fa09720-5b0e-48a5-8895-5af8af928c01.eot?#iefix') format('eot'),
+    url('./5dd9f4c4-cfde-415c-bb51-433569311de5.woff2') format('woff2'),
+    url('./3b15daf5-d7fb-4099-93b9-db20fd26c2fe.woff') format('woff'),
+    url('./16159505-c85d-44ba-ba2b-64f94e68ddb5.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Condensed It';
+  src: url('./0a176c2f-5c95-4054-8f3f-453b3cce1127.eot?#iefix');
+  src: url('./0a176c2f-5c95-4054-8f3f-453b3cce1127.eot?#iefix') format('eot'),
+    url('./953cafbe-9515-4e7a-af44-c5dc1c025e53.woff2') format('woff2'),
+    url('./6597bee5-b9db-40e8-843d-1e3239b43f02.woff') format('woff'),
+    url('./423bde56-1204-4449-af27-838f9ee024d3.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DINNextW01-CondensedMed';
+  src: url('./0b46a18d-fb34-4ef7-b5da-5902c510577a.eot?#iefix');
+  src: url('./0b46a18d-fb34-4ef7-b5da-5902c510577a.eot?#iefix') format('eot'),
+    url('./76b8cda6-0ded-4197-acab-e314297eb90f.woff2') format('woff2'),
+    url('./2613a064-2962-44af-ae6f-3640e06e8dc4.woff') format('woff'),
+    url('./2889b152-497e-4ea3-a90d-02854d136a8d.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Medium Cond It';
+  src: url('./14476c1d-0c32-41d2-aa6d-9afe95f0149f.eot?#iefix');
+  src: url('./14476c1d-0c32-41d2-aa6d-9afe95f0149f.eot?#iefix') format('eot'),
+    url('./d2297395-21f1-45d2-9192-2e75249cb766.woff2') format('woff2'),
+    url('./81b35f3b-6458-4bb3-8b9f-162e5cd2adb9.woff') format('woff'),
+    url('./e711e947-649a-4b37-a2b0-175b75ac03e5.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DINNextW01-CondensedBol';
+  src: url('./71888b4d-cd66-4c8b-9a5c-b37014e8e4fa.eot?#iefix');
+  src: url('./71888b4d-cd66-4c8b-9a5c-b37014e8e4fa.eot?#iefix') format('eot'),
+    url('./258804c2-9ca6-4856-bad7-67cde4f087b4.woff2') format('woff2'),
+    url('./0c0418fe-d324-4ab2-978a-e8201c646ca1.woff') format('woff'),
+    url('./2c4f6a99-1274-42cd-8d14-fecf6ae449a4.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'DIN Next LT W01 Bold Cond It';
+  src: url('./12394a60-5c46-4b14-9671-fb72fba4976a.eot?#iefix');
+  src: url('./12394a60-5c46-4b14-9671-fb72fba4976a.eot?#iefix') format('eot'),
+    url('./2fb2d75b-709a-474a-9967-f59a2c5ec7c2.woff2') format('woff2'),
+    url('./93acdbf7-9098-4950-a6d9-c5659a584d13.woff') format('woff'),
+    url('./e471a085-5c92-4a0d-beb0-467e651482fd.ttf') format('truetype');
+}

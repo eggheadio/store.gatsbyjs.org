@@ -6,7 +6,7 @@ import { colors, radius, spacing } from '../../utils/styles';
 
 export const Input = styled(`input`)`
   background-color: ${colors.lightest};
-  border: 1px solid ${colors.brandBright};
+  border: 1px solid #d4d4d4;
   border-radius: ${radius.default}px;
   color: ${colors.text};
   display: block;
@@ -15,7 +15,7 @@ export const Input = styled(`input`)`
   width: 100%;
 
   :focus {
-    box-shadow: 0 0 0 3px ${colors.accent};
+    box-shadow: 0 0 0 3px ${colors.brand};
     outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }
@@ -24,11 +24,11 @@ export const Input = styled(`input`)`
 export const Select = styled(Input.withComponent('select'))`
   appearance: none;
   /* stylelint-disable */
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.lilac.substr(
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.text.substr(
     1
   )}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
   /* stylelint-enable */
-  background-position: right 0.5rem center;
+  background-position: right 1rem center;
   background-repeat: no-repeat;
   background-size: 8px 10px;
   padding-right: ${spacing.xl}px !important;

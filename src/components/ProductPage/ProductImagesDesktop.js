@@ -11,7 +11,7 @@ const THUMBNAIL_SIZE = '54px';
 
 const ProductImagesDesktopRoot = styled(`div`)`
   margin-right: ${spacing.lg}px;
-  width: 440px;
+  //display: flex;
 `;
 
 const Thumbnails = styled(ProductThumbnails)`

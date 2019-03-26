@@ -38,7 +38,7 @@ const Details = styled(`div`)`
     flex-direction: column;
     justify-content: space-between;
     margin-right: -${spacing.xl}px;
-    max-width: 400px;
+    max-width: 480px;
     min-height: 490px;
   }
 `;

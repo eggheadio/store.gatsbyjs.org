@@ -6,8 +6,11 @@ import {
   MdInfoOutline,
   MdErrorOutline,
   MdShoppingCart,
+  MdArrowForward,
   MdSentimentDissatisfied
 } from 'react-icons/md';
+
+import { FiShoppingBag } from 'react-icons/fi';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 
@@ -18,8 +21,7 @@ import Link from '../shared/Link';
 
 const Form = styled(`form`)`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   padding: ${spacing['2xl']}px ${spacing.md}px 0;
 
   @media (min-width: ${breakpoints.tablet}px) {
@@ -65,10 +67,7 @@ const ErrorMsgs = styled(`ul`)`
 `;
 
 const QtyFieldset = styled(Fieldset)`
-  flex-basis: 65px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  margin-right: ${spacing.md}px;
+  flex-basis: 30px;
 
   ${Label} {
     text-align: center;
@@ -82,10 +81,14 @@ const QtyFieldset = styled(Fieldset)`
 
 const SizeFieldset = styled(Fieldset)`
   flex-basis: calc(100% - ${spacing.md}px - 70px);
-
+  margin-left: ${spacing.md}px;
   ${Label} {
     justify-content: space-between;
   }
+`;
+
+const Fields = styled.div`
+  display: flex;
 `;
 
 const InfoLinks = styled(`div`)`
@@ -97,8 +100,10 @@ const InfoLinks = styled(`div`)`
 `;
 
 const AddToCartButton = styled(Submit)`
-  align-self: flex-end;
-  flex-grow: 1;
+  span {
+    margin-top: 5px;
+    margin-right: 10px;
+  }
   height: ${props => (props.fullWidth ? 'auto' : '')};
   width: ${props => (props.fullWidth ? '100%' : 'auto')};
 `;
@@ -188,55 +193,57 @@ class ProductForm extends Component {
                 ))}
               </ErrorMsgs>
             </Errors>
-            <QtyFieldset>
-              <Label htmlFor="quantity">Qty.</Label>
-              <Input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                step="1"
-                onChange={this.handleChange}
-                value={this.state.quantity}
-              />
-            </QtyFieldset>
-            {hasVariants && (
-              <SizeFieldset>
-                <Label htmlFor="variant">
-                  Size{' '}
-                  <Link to="/product-details">
-                    <MdInfoOutline />
-                    <span>Size Chart</span>
-                  </Link>
-                </Label>
-                <Select
-                  id="variant"
-                  value={this.state.variant}
-                  name="variant"
+            <Fields>
+              <QtyFieldset>
+                <Label htmlFor="quantity">Qty.</Label>
+                <Input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  min="1"
+                  step="1"
                   onChange={this.handleChange}
-                >
-                  <option disabled value="">
-                    Choose Size
-                  </option>
-                  {variants.map(variant => (
-                    <option
-                      disabled={!variant.availableForSale}
-                      value={variant.shopifyId}
-                      key={variant.shopifyId}
-                    >
-                      {variant.title}
+                  value={this.state.quantity}
+                />
+              </QtyFieldset>
+              {hasVariants && (
+                <SizeFieldset>
+                  <Label htmlFor="variant">
+                    Size & Style{' '}
+                    <Link to="/product-details" aria-label="Size Chart">
+                      <MdInfoOutline />
+                      <span>Size Chart</span>
+                    </Link>
+                  </Label>
+                  <Select
+                    id="variant"
+                    value={this.state.variant}
+                    name="variant"
+                    onChange={this.handleChange}
+                  >
+                    <option disabled value="">
+                      Choose Size & Style
                     </option>
-                  ))}
-                </Select>
-              </SizeFieldset>
-            )}
+                    {variants.map(variant => (
+                      <option
+                        disabled={!variant.availableForSale}
+                        value={variant.shopifyId}
+                        key={variant.shopifyId}
+                      >
+                        {variant.title}
+                      </option>
+                    ))}
+                  </Select>
+                </SizeFieldset>
+              )}
+            </Fields>
             <AddToCartButton
               type="submit"
               disabled={isOutOfStock}
               fullWidth={hasVariants}
             >
-              {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
-              {isOutOfStock ? <MdSentimentDissatisfied /> : <MdShoppingCart />}
+              <span>{isOutOfStock ? 'Out of Stock' : 'Add to Cart'}</span>
+              {isOutOfStock ? <MdSentimentDissatisfied /> : <MdArrowForward />}
             </AddToCartButton>
             <InfoLinks>
               <Link to="/product-details#materials-fit">

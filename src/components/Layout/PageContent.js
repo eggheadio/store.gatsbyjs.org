@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import Footer from './Footer';
-import { breakpoints, dimensions, animations } from '../../utils/styles';
+import {
+  breakpoints,
+  dimensions,
+  animations,
+  colors
+} from '../../utils/styles';
 
 const {
   desktopAreaWidth: {
@@ -14,13 +19,15 @@ const {
 } = dimensions;
 
 const PageContentRoot = styled(`main`)`
+  //background: ${colors.brandLighter};
+  //background: #fafafa;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   min-height: calc(100vh - 60px);
   opacity: 1;
   padding-left: 0;
-  transition: 0.75s;
+  transition: 0.6s ease;
   width: 100%;
   will-change: transform;
 
