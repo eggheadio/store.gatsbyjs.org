@@ -26,13 +26,12 @@ const TRANSITION_DURATION = '250ms';
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
-  //box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   border: 1px solid #f1f1f1;
-  margin-bottom: ${spacing.lg}px;
   overflow: hidden;
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
 
+  //margin-bottom: ${spacing.lg}px;
   /* @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
     margin-right: auto;
@@ -72,6 +71,7 @@ const Preview = styled(`div`)`
 
   .gatsby-image-wrapper {
     transition: all ${TRANSITION_DURATION};
+    background: #f1f1f1;
   }
 
   @media (hover: hover) {
