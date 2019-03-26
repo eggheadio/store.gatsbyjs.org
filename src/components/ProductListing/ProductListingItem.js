@@ -31,22 +31,9 @@ const ProductListingItemLink = styled(Link)`
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
 
-  //margin-bottom: ${spacing.lg}px;
-  /* @media (min-width: ${breakpoints.tablet}px) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 500px;
-  } */
-  /* @media (min-width: ${breakpoints.desktop}px) {
-    flex-basis: 330px;
-    justify-content: center;
-    margin: ${spacing.md * 1.25}px;
-  } */
-
   @media (hover: hover) {
     :hover {
       background: #ffffff;
-      //border: 1px solid #E8E8E8;
       box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.11);
     }
   }
@@ -63,7 +50,6 @@ const Item = styled(`article`)`
 
 const Preview = styled(`div`)`
   border-bottom: 1px solid #f1f1f1;
-  //border-radius: ${radius.large}px ${radius.large}px 0 0;
   margin: -${spacing.lg}px;
   margin-bottom: ${spacing['3xl']}px;
   overflow: hidden;
@@ -72,6 +58,9 @@ const Preview = styled(`div`)`
   .gatsby-image-wrapper {
     transition: all ${TRANSITION_DURATION};
     background: #f1f1f1;
+    @media (min-width: ${breakpoints.desktop}px) {
+      max-height: 43vmax;
+    }
   }
 
   @media (hover: hover) {
@@ -176,17 +165,13 @@ const Price = styled(`div`)`
 
 const Incentive = styled('div')`
   align-items: center;
-  //color: ${colors.brand};
   color: ${colors.textLight};
   display: flex;
   font-size: 0.85rem;
   line-height: 1.3;
-  //position: absolute;
-  //margin-bottom: ${spacing['2xs']}px;
   opacity: 0;
   text-align: right;
   transition: all ${TRANSITION_DURATION};
-  //background: #fafafa;
   background: ${colors.brandLighter};
   padding: ${spacing.sm}px ${spacing.md}px;
   transform: translateY(65px);
