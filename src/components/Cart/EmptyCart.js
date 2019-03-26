@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { colors, spacing } from '../../utils/styles';
-import iscreamIllustration from '../../assets/iscreamEggo.png';
+import monocleEggo from '../../assets/monocle-eggo.png';
 
 const EmptyCartRoot = styled('div')`
   align-items: center;
@@ -28,7 +28,7 @@ const EmptyCartImage = styled('img')`
 
 const EmptyCart = () => (
   <EmptyCartRoot>
-    <EmptyCartImage src={iscreamIllustration} alt="Your cart is empty" />
+    <EmptyCartImage src={monocleEggo} alt="Your cart is empty" />
     <EmptyCartCopy>
       <p>Your cart is empty.</p>
       <p>Treat yourself with some egghead swag.</p>

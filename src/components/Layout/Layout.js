@@ -15,8 +15,7 @@ import SiteMetadata from '../shared/SiteMetadata';
 
 import { breakpoints } from '../../utils/styles';
 
-// Import Futura PT typeface
-import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
+// Import DIN typeface
 import '../../fonts/din/din.css';
 
 injectGlobal`
