@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://store.egghead.io',
     title: 'the egghead.io swag store',
-    description: 'Buy egghead swag'
+    description: 'Buy egghead swag.'
   },
   plugins: [
     {

@@ -104,6 +104,9 @@ const AddToCartButton = styled(Submit)`
     margin-top: 5px;
     margin-right: 10px;
   }
+  svg {
+    margin-right: 0;
+  }
   height: ${props => (props.fullWidth ? 'auto' : '')};
   width: ${props => (props.fullWidth ? '100%' : 'auto')};
 `;
