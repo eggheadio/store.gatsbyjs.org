@@ -33,16 +33,16 @@ const ProductListingItemLink = styled(Link)`
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
 
-  @media (min-width: ${breakpoints.tablet}px) {
+  /* @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
     margin-right: auto;
     max-width: 500px;
-  }
-  @media (min-width: ${breakpoints.desktop}px) {
+  } */
+  /* @media (min-width: ${breakpoints.desktop}px) {
     flex-basis: 330px;
     justify-content: center;
     margin: ${spacing.md * 1.25}px;
-  }
+  } */
 
   @media (hover: hover) {
     :hover {
