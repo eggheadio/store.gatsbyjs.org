@@ -110,12 +110,18 @@ class Header extends Component {
         <HomeLink
           to="/"
           aria-label="Home page"
-          onMouseOver={() => {
-            this.setState({
-              logo: `${sample(eggos)}`
-            });
+          onMouseEnter={() => {
+            if (this.props.isDesktopViewport) {
+              this.setState({
+                logo: `${sample(eggos)}`
+              });
+            } else {
+              this.setState({
+                logo: `${Eggo}`
+              });
+            }
           }}
-          onMouseOut={() => {
+          onMouseLeave={() => {
             this.setState({
               logo: `${Eggo}`
             });
