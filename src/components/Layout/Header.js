@@ -51,15 +51,21 @@ const HomeLink = styled(Link)`
   margin-right: auto;
   height: 100%;
   h1 {
+    display: flex;
+    align-items: center;
     font-size: 1.3em;
     letter-spacing: 0.02em;
     font-family: ${fonts.heading};
     padding-top: 5px;
+    height: 100%;
   }
   line-height: 1;
   margin: 0;
   img {
     padding-right: ${spacing.sm}px;
+    max-width: 50px;
+    width: 100%;
+    margin: 0;
   }
 `;
 
@@ -115,7 +121,7 @@ class Header extends Component {
             });
           }}
         >
-          <img src={logo} height="44" alt="egghead swag store" />
+          <img src={logo} alt="egghead swag store" />
           <h1>swag store</h1>
         </HomeLink>
       </HeaderRoot>
