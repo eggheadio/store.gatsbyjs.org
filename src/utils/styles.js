@@ -113,7 +113,7 @@ export const scrollbarStyles = {
   WebkitOverflowScrolling: `touch`,
   '&::-webkit-scrollbar': { width: `6px`, height: `6px` },
   '&::-webkit-scrollbar-thumb': { background: colors.brandBright },
-  '&::-webkit-scrollbar-thumb:hover': { background: colors.lilac },
+  '&::-webkit-scrollbar-thumb:hover': { background: colors.brand },
   '&::-webkit-scrollbar-track': { background: colors.brandLight }
 };
 

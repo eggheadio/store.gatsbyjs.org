@@ -40,6 +40,7 @@ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr) );
 const query = graphql`
   query ProductListingQuery {
     products: allShopifyProduct(sort: { fields: [publishedAt], order: ASC }) {
+      totalCount
       edges {
         node {
           id
@@ -77,7 +78,11 @@ const ProductListing = () => (
         {/* <ProductListingHeader /> */}
         <ProductListingContainer>
           {products.edges.map(({ node: product }) => (
-            <ProductListingItem key={product.id} product={product} />
+            <ProductListingItem
+              key={product.id}
+              product={product}
+              totalCount={products.totalCount}
+            />
           ))}
         </ProductListingContainer>
       </>

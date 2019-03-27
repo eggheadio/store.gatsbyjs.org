@@ -44,8 +44,15 @@ const Item = styled(`article`)`
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: ${spacing.lg}px;
+  height: 100%;
+  @media (min-width: ${breakpoints.desktop}px) {
+    height: 100%;
+    height: ${props => (props.totalCount > '2' ? '100%' : '520px')};
+  }
+  @media (min-width: ${breakpoints.hd}px) {
+    height: ${props => (props.totalCount > '2' ? '100%' : '670px')};
+  }
 `;
 
 const Preview = styled(`div`)`
@@ -220,6 +227,7 @@ const CartIcon = styled(`span`)`
 
 const ProductListingItem = props => {
   const {
+    totalCount,
     product: {
       title,
       handle,
