@@ -46,11 +46,16 @@ const Item = styled(`article`)`
   flex-direction: column;
   padding: ${spacing.lg}px;
   height: 100%;
-  @media (min-width: ${breakpoints.desktop}px) {
-    height: ${props => (props.totalCount > '2' ? '100%' : '520px')};
+  @media (min-width: 1024px) {
+    height: ${props => (props.totalCount > '2' ? '100%' : '480px')};
   }
-  @media (min-width: ${breakpoints.hd}px) {
-    height: ${props => (props.totalCount > '2' ? '100%' : '85vh')};
+  @media (min-width: 1025px) {
+    height: ${props => (props.totalCount > '2' ? '100%' : '660px')};
+    max-height: 85vh;
+  }
+  @media (min-width: 1460px) {
+    height: 100%;
+    max-height: ${props => (props.totalCount > '2' ? 'auto' : '85vh')};
   }
 `;
 
