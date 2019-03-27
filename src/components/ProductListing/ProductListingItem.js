@@ -47,11 +47,10 @@ const Item = styled(`article`)`
   padding: ${spacing.lg}px;
   height: 100%;
   @media (min-width: ${breakpoints.desktop}px) {
-    height: 100%;
     height: ${props => (props.totalCount > '2' ? '100%' : '520px')};
   }
   @media (min-width: ${breakpoints.hd}px) {
-    height: ${props => (props.totalCount > '2' ? '100%' : '670px')};
+    height: ${props => (props.totalCount > '2' ? '100%' : '85vh')};
   }
 `;
 
