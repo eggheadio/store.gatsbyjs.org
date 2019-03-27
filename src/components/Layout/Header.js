@@ -1,15 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
-import Logo from './Logo';
+import Eggo from '../../assets/eggo.svg';
+import PartyEggo from '../../assets/eggo-party.png';
+import GlassesEggo from '../../assets/eggo-glasses.png';
+import PilotEggo from '../../assets/eggo-pilot.png';
+import TamagotchiEggo from '../../assets/eggo-tamagotchi.png';
+import WorkerEggo from '../../assets/eggo-worker.png';
+import { sample } from 'lodash';
 
-import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  dimensions,
+  spacing,
+  fonts
+} from '../../utils/styles';
 
 const HeaderRoot = styled('header')`
   align-items: center;
   background-color: ${colors.lightest};
-  border-bottom: 1px solid ${colors.brandLight};
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.11);
   box-sizing: border-box;
   display: ${props => (props.isCovered ? 'none' : 'flex')};
   height: ${dimensions.headerHeight};
@@ -30,10 +42,31 @@ const HeaderRoot = styled('header')`
 `;
 
 const HomeLink = styled(Link)`
-  display: block;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
-  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: ${colors.text};
   margin-right: auto;
+  height: 100%;
+  h1 {
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    letter-spacing: 0.02em;
+    font-family: ${fonts.heading};
+    padding-top: 5px;
+    height: 100%;
+  }
+  line-height: 1;
+  margin: 0;
+  img {
+    padding-right: ${spacing.sm}px;
+    max-width: 50px;
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 class Header extends Component {
@@ -64,12 +97,38 @@ class Header extends Component {
   }
 
   render() {
-    const { className } = this.state;
-
+    const { className, logo = `${Eggo}` } = this.state;
+    const eggos = {
+      1: `${PartyEggo}`,
+      2: `${PilotEggo}`,
+      3: `${GlassesEggo}`,
+      4: `${TamagotchiEggo}`,
+      5: `${WorkerEggo}`
+    };
     return (
       <HeaderRoot className={className}>
-        <HomeLink to="/" aria-label="Home page">
-          <Logo />
+        <HomeLink
+          to="/"
+          aria-label="Home page"
+          onMouseEnter={() => {
+            if (this.props.isDesktopViewport) {
+              this.setState({
+                logo: `${sample(eggos)}`
+              });
+            } else {
+              this.setState({
+                logo: `${Eggo}`
+              });
+            }
+          }}
+          onMouseLeave={() => {
+            this.setState({
+              logo: `${Eggo}`
+            });
+          }}
+        >
+          <img src={logo} alt="egghead swag store" />
+          <h1>swag store</h1>
         </HomeLink>
       </HeaderRoot>
     );

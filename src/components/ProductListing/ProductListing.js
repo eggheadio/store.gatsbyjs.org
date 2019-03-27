@@ -8,59 +8,81 @@ import ProductListingItem from './ProductListingItem';
 import { breakpoints, spacing } from '../../utils/styles';
 
 const ProductListingContainer = styled(`div`)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: ${spacing.lg}px;
 
-  @media (min-width: ${breakpoints.desktop}px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: ${spacing['2xl']}px;
-  }
+display: grid;
+grid-gap: 30px;
+padding: 30px;
+
+@media (min-width: ${breakpoints.desktop}px) {
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr) );
+}
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr) );
+
+  //  display: flex;
+  //  justify-content: center;
+  //  padding: ${spacing.lg}px;
+  //  flex-direction: column;
+
+  //  @media (min-width: ${breakpoints.tablet}px) {
+  //   flex-direction: row;
+  //   flex-wrap: wrap;
+  //  }
+
+  // @media (min-width: ${breakpoints.desktop}px) {
+    
+  //   flex-direction: row;
+  //   flex-wrap: wrap;
+  //   // padding: ${spacing['2xl']}px;
+  // }
+
 `;
 
-const ProductListing = () => (
-  <StaticQuery
-    query={graphql`
-      query ProductListingQuery {
-        products: allShopifyProduct(
-          sort: { fields: [publishedAt], order: ASC }
-        ) {
-          edges {
-            node {
-              id
-              handle
-              title
-              description
-              productType
-              variants {
-                shopifyId
-                title
-                price
-                availableForSale
-              }
-              images {
-                id
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 910, maxHeight: 910) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
+const query = graphql`
+  query ProductListingQuery {
+    products: allShopifyProduct(sort: { fields: [publishedAt], order: ASC }) {
+      totalCount
+      edges {
+        node {
+          id
+          handle
+          title
+          description
+          productType
+          variants {
+            shopifyId
+            title
+            price
+            availableForSale
+          }
+          images {
+            id
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 910, maxHeight: 910) {
+                  ...GatsbyImageSharpFluid_noBase64
                 }
               }
             }
           }
         }
       }
-    `}
+    }
+  }
+`;
+
+const ProductListing = () => (
+  <StaticQuery
+    query={query}
     render={({ products }) => (
       <>
-        <ProductListingHeader />
+        {/* <ProductListingHeader /> */}
         <ProductListingContainer>
           {products.edges.map(({ node: product }) => (
-            <ProductListingItem key={product.id} product={product} />
+            <ProductListingItem
+              key={product.id}
+              product={product}
+              totalCount={products.totalCount}
+            />
           ))}
         </ProductListingContainer>
       </>

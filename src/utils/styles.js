@@ -9,18 +9,18 @@ import { keyframes } from 'react-emotion';
  *    border-color: ${colors.brand}40;
  */
 export const colors = {
-  brandDarker: '#221133',
-  brandDark: '#442266',
-  brand: '#663399',
-  brandBright: '#e0d6eb',
-  brandLight: '#f5f3f7',
-  brandLighter: '#fbfafc',
+  brandDarker: '#2E414F',
+  brandDark: '#0075CD',
+  brand: '#0091FF',
+  brandBright: '#C4E6FF',
+  brandLight: '#E8F0F8',
+  brandLighter: '#F2F4F6',
   lightest: '#ffffff',
-  darkest: '#4d4058',
-  text: '#333333',
-  textMild: '#555555',
-  textLight: '#7e718a',
-  textLighter: '#aaaaaa',
+  darkest: '#002E51',
+  text: '#242A2E',
+  textMild: '#445C6E',
+  textLight: '#606B73',
+  textLighter: '#8D9EAA',
   lilac: `#8c65b3`,
   accent: `#ffb238`,
   error: `#ec1818`,
@@ -91,19 +91,18 @@ const monospaceFontStack = [
 
 export const fonts = {
   body: defaultFontStack,
-  heading: `Futura PT, ${defaultFontStack}`,
+  heading: `DINNextW01-CondensedReg, ${defaultFontStack}`,
   monospace: monospaceFontStack
 };
 
 export const dimensions = {
   headerHeight: '60px',
   cartWidthDesktop: '400px',
-  contributorAreaWidth: {
-    closedDesktop: '60px',
-    openDesktop: '340px',
-    openHd: '420px'
+  desktopAreaWidth: {
+    //closedDesktop: '60px',
+    //openDesktop: '340px',
+    //openHd: '420px'
   },
-  contributorAreaBarHeight: '50px',
   pictureBrowserAction: {
     widthDesktop: '200px',
     heightMobile: '80px'
@@ -114,7 +113,7 @@ export const scrollbarStyles = {
   WebkitOverflowScrolling: `touch`,
   '&::-webkit-scrollbar': { width: `6px`, height: `6px` },
   '&::-webkit-scrollbar-thumb': { background: colors.brandBright },
-  '&::-webkit-scrollbar-thumb:hover': { background: colors.lilac },
+  '&::-webkit-scrollbar-thumb:hover': { background: colors.brand },
   '&::-webkit-scrollbar-track': { background: colors.brandLight }
 };
 

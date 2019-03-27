@@ -55,7 +55,7 @@ const Incentive = styled(`div`)`
     font-size: 1.2rem;
     line-height: 1.2;
     margin: 0 0 0.5em;
-
+    text-transform: uppercase;
     svg {
       fill: ${colors.brand};
       height: 1.15em;
@@ -82,14 +82,12 @@ const ProductImagesMobile = ({ images, imageOnClick }) => (
       <Incentive>
         <h3>
           <MdCameraAlt />
-          We want to see your Gatsby swag photos!
+          We want to see your egghead swag photos!
         </h3>
         <p>
-          Upload your photos to{' '}
-          <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
-            the official photo sharing issue
-          </a>{' '}
-          and it may be featured in the store!
+          Send your photos to{' '}
+          <a href="mailto:support@egghead.io">support@egghead.io</a> and it may
+          be featured in the store!
         </p>
       </Incentive>
     </ProductImagesMobileContent>

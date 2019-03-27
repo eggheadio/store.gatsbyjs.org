@@ -26,55 +26,58 @@ const TRANSITION_DURATION = '250ms';
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
-  border-radius: ${radius.large}px;
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
-  margin-bottom: ${spacing.lg}px;
+  border: 1px solid #f1f1f1;
   overflow: hidden;
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
 
-  @media (min-width: ${breakpoints.tablet}px) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 500px;
-  }
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    flex-basis: 300px;
-    justify-content: center;
-    margin: ${spacing.md * 1.25}px;
-  }
-
   @media (hover: hover) {
     :hover {
-      background: ${colors.brandLighter};
+      background: #ffffff;
+      box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.11);
     }
   }
 `;
 
 const Item = styled(`article`)`
+  overflow: hidden;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%;
   padding: ${spacing.lg}px;
+  height: 100%;
+  @media (min-width: 1024px) {
+    height: ${props => (props.totalCount > '2' ? '100%' : '480px')};
+  }
+  @media (min-width: 1025px) {
+    height: ${props => (props.totalCount > '2' ? '100%' : '660px')};
+    max-height: 85vh;
+  }
+  @media (min-width: 1460px) {
+    height: 100%;
+    max-height: ${props => (props.totalCount > '2' ? 'auto' : '85vh')};
+  }
 `;
 
 const Preview = styled(`div`)`
-  border-bottom: 1px solid ${colors.brandLight};
-  border-radius: ${radius.large}px ${radius.large}px 0 0;
+  border-bottom: 1px solid #f1f1f1;
   margin: -${spacing.lg}px;
-  margin-bottom: ${spacing.lg}px;
+  margin-bottom: ${spacing['3xl']}px;
   overflow: hidden;
   position: relative;
 
   .gatsby-image-wrapper {
     transition: all ${TRANSITION_DURATION};
+    background: #f1f1f1;
+    @media (min-width: ${breakpoints.desktop}px) {
+      max-height: 43vmax;
+    }
   }
 
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       .gatsby-image-wrapper {
-        transform: scale(1.1);
+        //transform: scale(1.1);
       }
     }
   }
@@ -117,11 +120,21 @@ const CodeEligibility = styled(`div`)`
 `;
 
 const Name = styled(`h1`)`
-  color: ${colors.brandDark};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: ${colors.text};
   font-family: ${fonts.heading};
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   line-height: 1.2;
+  letter-spacing: 0.03em;
   margin: 0;
+  min-height: 2.5em;
+  span {
+    font-size: 70%;
+    color: ${colors.textLight};
+    font-weight: normal;
+  }
 `;
 
 const Description = styled(`p`)`
@@ -132,37 +145,51 @@ const Description = styled(`p`)`
 `;
 
 const PriceRow = styled(`div`)`
-  align-items: flex-end;
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  margin-top: ${spacing.xs}px;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: ${spacing.md}px;
 `;
 
 const Price = styled(`div`)`
+  font-family: ${fonts.monospace};
   color: ${colors.brand};
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 500;
   letter-spacing: -0.02em;
-
+  display: flex;
+  align-items: center;
   span {
     color: ${colors.textLight};
+    opacity: 0.8;
+    font-size: 70%;
+    margin-right: ${spacing['2xs']}px;
   }
+  @media (hover: hover) {
+    ${ProductListingItemLink}:hover & {
+      transform: translateY(-10px);
+    }
+  }
+  transition: all ${TRANSITION_DURATION};
 `;
 
 const Incentive = styled('div')`
   align-items: center;
-  color: ${colors.lilac};
+  color: ${colors.textLight};
   display: flex;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.3;
-  margin-bottom: ${spacing['2xs']}px;
-  margin-right: calc(-${spacing.lg}px - 40px);
+  opacity: 0;
   text-align: right;
   transition: all ${TRANSITION_DURATION};
-
+  background: ${colors.brandLighter};
+  padding: ${spacing.sm}px ${spacing.md}px;
+  transform: translateY(65px);
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
-      transform: translateX(-40px);
+      transform: translateY(25px);
+      opacity: 1;
     }
   }
 
@@ -202,25 +229,13 @@ const CartIcon = styled(`span`)`
   }
 `;
 
-const checkEligibility = ({ contributor, freeWith }) => {
-  const { shopify } = contributor;
-
-  let eligibleCodes = [];
-
-  if (shopify && shopify.codes) {
-    eligibleCodes = shopify.codes.filter(
-      code => code.code === freeWith && code.used === false
-    );
-  }
-
-  return eligibleCodes.length ? true : false;
-};
-
 const ProductListingItem = props => {
   const {
+    totalCount,
     product: {
       title,
       handle,
+      productType,
       description,
       variants: [firstVariant],
       images: [firstImage]
@@ -239,44 +254,35 @@ const ProductListingItem = props => {
 
   return (
     <UserContext.Consumer>
-      {({ contributor }) => {
+      {() => {
         return (
           <ProductListingItemLink to={`/product/${handle}`}>
             <Item>
               <Preview>
                 <Image fluid={fluid} />
-                {checkEligibility({
-                  freeWith,
-                  contributor
-                }) && (
-                  <CodeEligibility freeWith={freeWith}>
-                    <span>free with </span>
-                    <span>
-                      Code Swag Level
-                      {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                    </span>
-                  </CodeEligibility>
-                )}
               </Preview>
-              <Name>{title}</Name>
-              <Description>
-                {cutDescriptionShort(
-                  removeCareInstructions(description),
-                  DESCRIPTION_LIMIT
-                )}
-              </Description>
+              <Name>
+                {title} <span>{productType}</span>
+              </Name>
+              {description && (
+                <Description>
+                  {cutDescriptionShort(
+                    removeCareInstructions(description),
+                    DESCRIPTION_LIMIT
+                  )}
+                </Description>
+              )}
               <PriceRow>
                 <Price>
                   <span>USD</span> ${price}
                 </Price>
                 <Incentive>
                   <span>
-                    view details
-                    <br />& buy <MdArrowForward />
+                    view details & buy <MdArrowForward />
                   </span>
-                  <CartIcon>
+                  {/* <CartIcon>
                     <MdShoppingCart />
-                  </CartIcon>
+                  </CartIcon> */}
                 </Incentive>
               </PriceRow>
             </Item>

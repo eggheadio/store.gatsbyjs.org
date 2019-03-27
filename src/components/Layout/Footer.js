@@ -8,6 +8,7 @@ const FooterRoot = styled('footer')`
   color: ${colors.textMild};
   display: flex;
   flex-direction: column;
+
   font-size: 0.85rem;
   padding: ${spacing.md}px;
   padding-bottom: calc(${spacing.xl}px + 50px);
@@ -50,25 +51,9 @@ const Spacer = styled(`span`)`
 
 const Footer = () => (
   <FooterRoot>
+    <Row>Got questions?&nbsp;</Row>
     <Row>
-      <b>Got questions?&nbsp;</b>
-    </Row>
-    <Row>
-      Talk to us on Twitter <a href="https://twitter.com/gatsbyjs">@gatsbyjs</a>
-    </Row>
-    <Row>
-      &nbsp;or send an email to{' '}
-      <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
-    </Row>
-    <Spacer>•</Spacer>
-    <Row>
-      Built with 💜 by the{' '}
-      <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
-    </Row>
-    <Spacer>•</Spacer>
-    <Row>
-      See the source code on{' '}
-      <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
+      <a href="mailto:support@egghead.io">support@egghead.io</a>
     </Row>
   </FooterRoot>
 );

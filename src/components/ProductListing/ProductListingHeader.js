@@ -13,10 +13,10 @@ const ProductListingHeaderRoot = styled(`header`)`
 `;
 
 const Title = styled(`h1`)`
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: 2.4rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   line-height: 1;
   margin: 0;
   margin-top: ${spacing.md}px;
@@ -26,27 +26,9 @@ const Title = styled(`h1`)`
   }
 `;
 
-const Intro = styled(`p`)`
-  color: ${colors.text};
-  font-size: 1rem;
-  line-height: 1.4;
-  margin: 0;
-  margin-top: ${spacing.md}px;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-`;
-
 const ProductListingHeader = () => (
   <ProductListingHeaderRoot>
-    <Title>Get Gatsby Swag!</Title>
-    <Intro>
-      The money we charge for swag helps to cover production and shipping costs.
-      In the unlikely event that Gatsby swag ends up turning a profit, we’ll
-      reinvest that money into the open source community.
-    </Intro>
+    <Title>Get egghead Swag!</Title>
   </ProductListingHeaderRoot>
 );
 

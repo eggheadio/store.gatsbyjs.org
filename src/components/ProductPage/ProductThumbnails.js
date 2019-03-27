@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import Image from 'gatsby-image';
+import Link from '../shared/Link';
 
 import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
-const THUMBNAIL_SIZE = '44px';
+const THUMBNAIL_SIZE = '60px';
 
 const ProductThumbnailsRoot = styled(`div`)`
   height: ${THUMBNAIL_SIZE};
@@ -23,26 +24,29 @@ const ProductThumbnailsRoot = styled(`div`)`
 
 export const ProductThumbnailsContent = styled(`div`)`
   display: inline-flex;
+  flex-direction: row;
+  align-items: center;
   height: 100%;
   padding-left: ${spacing.md}px;
 
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: center;
     min-width: 100%;
-    padding: ${spacing.lg}px 0 0;
+    padding: ${spacing.md}px 0 0;
   }
 `;
 
-export const Thumbnail = styled(`a`)`
-  border: 1px solid ${colors.brandBright};
-  border-radius: ${radius.default}px;
+export const Thumbnail = styled(Link)`
   height: ${THUMBNAIL_SIZE};
-  margin-right: ${spacing.md}px;
+  margin-right: ${spacing.sm}px;
   width: ${THUMBNAIL_SIZE};
-
+  border: 1px solid #f1f1f1;
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: pointer;
     margin-right: ${spacing.md}px;
+  }
+  .gatsby-image-wrapper {
+    width: 100%;
   }
 `;
 
@@ -73,7 +77,7 @@ class ProductThumbnails extends Component {
                   <Thumbnail
                     key={id}
                     onClick={this.handleClick(image, featureProductImage)}
-                    href={fluid.src}
+                    to={fluid.src}
                   >
                     <Image fluid={fluid} />
                   </Thumbnail>

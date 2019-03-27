@@ -43,7 +43,7 @@ const Details = styled(Intro)`
 `;
 
 const ArrowIcon = styled(MdKeyboardArrowDown)`
-  color: ${colors.lilac};
+  color: ${colors.brand};
   height: 26px;
   position: relative;
   stroke-width: 1px;
@@ -62,7 +62,7 @@ const ArrowIcon = styled(MdKeyboardArrowDown)`
 `;
 
 const InfoIcon = styled(MdInfo)`
-  color: ${colors.lilac};
+  color: ${colors.brand};
   margin-right: ${spacing['2xs']}px;
   vertical-align: middle;
 `;
@@ -90,7 +90,7 @@ class ShippingInfo extends Component {
           Tracking updates may not always show up in real time on your tracking
           link. If you still have not received your order at the end of 6 weeks,
           please let us know by sending an email to{' '}
-          <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
+          <a href="mailto:support@egghead.io">support@egghead.io</a>
         </Details>
       </ShippingInfoRoot>
     );

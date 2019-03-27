@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'react-emotion';
 import PropTypes from 'prop-types';
 
+import CartIcon from '../../assets/basket.svg';
+
 import {
   MdClose,
-  MdShoppingCart,
+  MdShoppingBasket,
   MdArrowBack,
   MdArrowForward
 } from 'react-icons/md';
+
+import { FiShoppingBag } from 'react-icons/fi';
 
 import StoreContext from '../../context/StoreContext';
 import CartList from './CartList';
 import CartIndicator from './CartIndicator';
 import EmptyCart from './EmptyCart';
-import FreeBonus from './FreeBonus';
 import ShippingInfo from './ShippingInfo';
 import { Button, PrimaryButton } from '../shared/Buttons';
 
@@ -32,7 +35,7 @@ const CartRoot = styled(`div`)`
   right: 0;
   top: -1px;
   transform: translateX(100%);
-  transition: transform 0.75s;
+  transition: transform 0.5s ease;
   width: 100%;
   will-change: transform;
   z-index: 1000;
@@ -87,6 +90,7 @@ const Title = styled(`h2`)`
   font-size: 1.8rem;
   left: -${dimensions.headerHeight};
   margin: 0;
+  margin-top: ${spacing.sm}px;
   margin-left: ${spacing.md}px;
   position: relative;
 
@@ -126,15 +130,18 @@ const Content = styled(`div`)`
 
 const ItemsNumber = styled(`span`)`
   align-items: center;
-  background: ${colors.lemon};
+  background: ${colors.brand};
   border-radius: 50%;
-  color: ${colors.brandDark};
+  color: ${colors.lightest};
   display: flex;
   font-size: 1.3rem;
   font-weight: bold;
+  line-height: 1;
   height: 36px;
   justify-content: center;
   width: 36px;
+  padding-top: 3px;
+  font-family: ${fonts.heading};
 `;
 
 const ItemsInCart = styled(`div`)`
@@ -172,7 +179,7 @@ const Cost = styled(`div`)`
   }
 
   strong {
-    color: ${colors.lilac};
+    color: ${colors.brand};
     flex-basis: 40%;
     text-align: right;
   }
@@ -233,14 +240,14 @@ const CartToggle = styled(Button)`
   transform: translateX(-100%);
   transition: all 0.5s ease;
   width: ${dimensions.headerHeight};
-
   :focus {
-    box-shadow: 0 0 0 1px ${colors.accent} inset;
+    border: 1px solid ${colors.brand};
+    outline: 0;
   }
 
   .open & {
-    background: ${colors.lilac};
-    color: ${colors.lightest};
+    background: ${colors.brandLight};
+    color: ${colors.brand};
     transform: translateX(0);
   }
 
@@ -356,7 +363,7 @@ class Cart extends Component {
                     <MdClose />
                   ) : (
                     <>
-                      <MdShoppingCart />
+                      <FiShoppingBag />
                       {itemsInCart > 0 && (
                         <ItemsNumber>{itemsInCart}</ItemsNumber>
                       )}
@@ -407,7 +414,6 @@ class Cart extends Component {
                     Back to shopping
                   </BackLink>
 
-                  <FreeBonus />
                   <ShippingInfo />
                 </Content>
               ) : (
@@ -424,7 +430,6 @@ class Cart extends Component {
 Cart.propTypes = {
   status: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  contributorAreaStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool,
   productImagesBrowserStatus: PropTypes.string
 };
