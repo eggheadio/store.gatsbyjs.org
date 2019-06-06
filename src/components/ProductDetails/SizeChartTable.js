@@ -110,7 +110,7 @@ const SizeChartTable = ({ unit }) => {
           </Tr>
           <Tr last>
             <TdLeft>Women's</TdLeft>
-            <Td>-</Td>
+            <Td>0–2</Td>
             <Td>2–4</Td>
             <Td>6–8</Td>
             <Td>8–10</Td>
