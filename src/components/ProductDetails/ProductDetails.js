@@ -13,6 +13,7 @@ const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.xl}px;
   margin-top: ${spacing.md}px;
   font-family: ${fonts.heading};
+  letter-spacing: 1px;
 `;
 
 const Section = styled(`section`)`
@@ -22,12 +23,13 @@ const Section = styled(`section`)`
     font-size: 1.5rem;
     margin-bottom: ${spacing.sm}px;
     font-family: ${fonts.heading};
+    letter-spacing: 1px;
   }
 `;
 
 const SectionHeading = styled(Heading.withComponent(`h2`))`
   font-size: 1.8rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 1px;
   margin-bottom: ${spacing.sm}px;
   text-transform: uppercase;
 `;
