@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import withProps from 'recompose/withProps';
 import { colors } from '../../utils/styles';
+import { isEmpty } from 'lodash/isEmpty';
 
 const ResponsiveTable = styled('div')`
   display: block;
@@ -16,42 +17,52 @@ const Table = styled('table')`
   max-width: 100%;
   min-width: 600px;
   width: 100%;
+  border: 1px solid #f1f4f7;
 `;
 
 const ThLeft = styled('th')`
-  padding: 4px 8px 4px 0;
+  padding: 4px 20px 4px 20px;
   text-align: left;
+  border-bottom: 1px solid #f1f4f7;
 `;
 
 const ThBrand = styled('th')`
-  background: ${colors.brand};
-  border-left: 1px solid #9d7cbf;
-  color: ${colors.lightest};
+  //background: ${colors.brand};
+  //border-left: 1px solid #0083e8;
+  border-bottom: 1px solid #f1f4f7;
+  border-left: 1px solid #f1f4f7;
+  
+  //color: ${colors.lightest};
   -webkit-font-smoothing: antialiased;
-  padding: 8px 0;
+  padding: 16px 8px;
+  font-size: 0.9rem;
 `;
 
 const Tr = styled('tr')`
-  border-bottom: ${props => (props.last ? 0 : '1px solid #e0d6eb')};
+  border-bottom: ${props => (props.last ? 0 : '1px solid #f1f4f7')};
 `;
 
 const Td = styled('td')`
-  border-left: 1px solid #f5f3f7;
-  padding: 8px 4px;
+  border-left: 1px solid #f1f4f7;
+  padding: 20px 4px;
   text-align: center;
   vertical-align: top;
+  font-size: 0.85rem;
 `;
 
 const TdLeft = withProps({
   colSpan: '2'
 })(styled('td')`
-  padding: 4px 8px 4px 0;
+  padding: 4px 8px 4px 10px;
 `);
 
 const SizeChartTable = ({ unit }) => {
   const multiplier = unit === 'cm' ? 2.54 : 1;
   const Size = ({ children: value }) => (
-    <span>{Math.round(value * multiplier * 10) / 10}</span>
+    <span className={css({ margin: '0 3px' })}>
+      {Math.round(value * multiplier * 10) / 10}
+      {unit !== 'cm' && '"'}
+    </span>
   );
 
   return (
@@ -61,49 +72,49 @@ const SizeChartTable = ({ unit }) => {
           <tr>
             <ThLeft>Style</ThLeft>
             <ThBrand>Sizes</ThBrand>
+            <ThBrand>XS</ThBrand>
             <ThBrand>S</ThBrand>
             <ThBrand>M</ThBrand>
             <ThBrand>L</ThBrand>
             <ThBrand>XL</ThBrand>
             <ThBrand>2XL</ThBrand>
+            <ThBrand>3XL</ThBrand>
           </tr>
           <Tr>
-            <TdLeft>Unisex Body Length</TdLeft>
+            <TdLeft>Men's</TdLeft>
             <Td>
-              <Size>27.5</Size>–<Size>28</Size>
+              <Size>31</Size>-<Size>34</Size>
             </Td>
             <Td>
-              <Size>28.5</Size>–<Size>29</Size>
+              <Size>34</Size>–<Size>37</Size>
             </Td>
             <Td>
-              <Size>29.5</Size>–<Size>30</Size>
+              <Size>38</Size>–<Size>41</Size>
             </Td>
             <Td>
-              <Size>30.5</Size>–<Size>31</Size>
+              <Size>42</Size>–<Size>45</Size>
             </Td>
             <Td>
-              <Size>31.5</Size>–<Size>32</Size>
-            </Td>
-          </Tr>
-          <Tr>
-            <TdLeft>Unisex Chest</TdLeft>
-            <Td>
-              <Size>36</Size>–<Size>36</Size>
+              <Size>46</Size>–<Size>49</Size>
             </Td>
             <Td>
-              <Size>39</Size>–<Size>41</Size>
+              <Size>50</Size>–<Size>53</Size>
             </Td>
             <Td>
-              <Size>42</Size>–<Size>44</Size>
-            </Td>
-            <Td>
-              <Size>45</Size>–<Size>48</Size>
-            </Td>
-            <Td>
-              <Size>49</Size>–<Size>52</Size>
+              <Size>54</Size>–<Size>57</Size>
             </Td>
           </Tr>
-          <Tr>
+          <Tr last>
+            <TdLeft>Women's</TdLeft>
+            <Td>0–2</Td>
+            <Td>2–4</Td>
+            <Td>6–8</Td>
+            <Td>8–10</Td>
+            <Td>10–14</Td>
+            <Td>14–18</Td>
+            <Td>22-24</Td>
+          </Tr>
+          {/* <Tr>
             <TdLeft>Women Body Length</TdLeft>
             <Td>
               <Size>25.375</Size>–<Size>26.5</Size>
@@ -126,7 +137,7 @@ const SizeChartTable = ({ unit }) => {
             <Td>—</Td>
             <Td>—</Td>
             <Td>—</Td>
-          </Tr>
+          </Tr> */}
         </tbody>
       </Table>
     </ResponsiveTable>

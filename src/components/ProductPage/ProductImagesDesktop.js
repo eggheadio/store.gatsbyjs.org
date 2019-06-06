@@ -10,12 +10,13 @@ import { spacing } from '../../utils/styles';
 const THUMBNAIL_SIZE = '54px';
 
 const ProductImagesDesktopRoot = styled(`div`)`
-  margin-right: ${spacing.lg}px;
+  margin: 0 ${spacing.lg}px;
   //display: flex;
 `;
 
 const Thumbnails = styled(ProductThumbnails)`
   ${Thumbnail} {
+    margin-bottom: ${spacing.sm}px;
     height: ${THUMBNAIL_SIZE};
     width: ${THUMBNAIL_SIZE};
   }

@@ -81,7 +81,7 @@ const ProductSpecs = props => {
   return (
     <ProductSpecsRoot>
       <Name>{title}</Name>
-      <Type>{productType}</Type>
+      {/* <Type>{productType}</Type> */}
       <Description>{removeCareInstructions(description)}</Description>
       <Price>
         <span>USD</span> ${price}

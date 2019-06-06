@@ -212,7 +212,7 @@ class ProductForm extends Component {
               {hasVariants && (
                 <SizeFieldset>
                   <Label htmlFor="variant">
-                    Size & Style{' '}
+                    Style & Size
                     <Link to="/product-details" aria-label="Size Chart">
                       <MdInfoOutline />
                       <span>Size Chart</span>
@@ -225,7 +225,7 @@ class ProductForm extends Component {
                     onChange={this.handleChange}
                   >
                     <option disabled value="">
-                      Choose Size & Style
+                      Choose Style & Size
                     </option>
                     {variants.map(variant => (
                       <option
@@ -248,15 +248,13 @@ class ProductForm extends Component {
               <span>{isOutOfStock ? 'Out of Stock' : 'Add to Cart'}</span>
               {isOutOfStock ? <MdSentimentDissatisfied /> : <MdArrowForward />}
             </AddToCartButton>
-            <InfoLinks>
-              <Link to="/product-details#materials-fit">
-                <span>Materials & Fit</span>
-              </Link>
-              &nbsp; • &nbsp;
-              <Link to="/product-details#care-instructions">
-                <span>Care instructions</span>
-              </Link>
-            </InfoLinks>
+            {hasVariants && (
+              <InfoLinks>
+                <Link to="/product-details#materials">
+                  <span>Materials & Sizes</span>
+                </Link>
+              </InfoLinks>
+            )}
           </Form>
         )}
       </StoreContext.Consumer>

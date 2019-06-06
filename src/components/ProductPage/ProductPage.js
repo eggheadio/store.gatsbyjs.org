@@ -79,7 +79,7 @@ class ProductPage extends Component {
           <Details>
             <BackLink>Back to Product List</BackLink>
             <ProductSpecs product={product} />
-            <ProductForm id={id} variants={variants} />
+            <ProductForm id={id} product={product} variants={variants} />
           </Details>
         </Container>
       </ProductPageRoot>
