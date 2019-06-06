@@ -17,36 +17,43 @@ const Table = styled('table')`
   max-width: 100%;
   min-width: 600px;
   width: 100%;
+  border: 1px solid #f1f4f7;
 `;
 
 const ThLeft = styled('th')`
-  padding: 4px 20px 4px 0;
+  padding: 4px 20px 4px 20px;
   text-align: left;
+  border-bottom: 1px solid #f1f4f7;
 `;
 
 const ThBrand = styled('th')`
-  background: ${colors.brand};
-  border-left: 1px solid #0083e8;
-  color: ${colors.lightest};
+  //background: ${colors.brand};
+  //border-left: 1px solid #0083e8;
+  border-bottom: 1px solid #f1f4f7;
+  border-left: 1px solid #f1f4f7;
+  
+  //color: ${colors.lightest};
   -webkit-font-smoothing: antialiased;
-  padding: 8px;
+  padding: 16px 8px;
+  font-size: 0.9rem;
 `;
 
 const Tr = styled('tr')`
-  border-bottom: ${props => (props.last ? 0 : '1px solid #F1F4F7')};
+  border-bottom: ${props => (props.last ? 0 : '1px solid #f1f4f7')};
 `;
 
 const Td = styled('td')`
   border-left: 1px solid #f1f4f7;
-  padding: 8px 4px;
+  padding: 20px 4px;
   text-align: center;
   vertical-align: top;
+  font-size: 0.8rem;
 `;
 
 const TdLeft = withProps({
   colSpan: '2'
 })(styled('td')`
-  padding: 4px 8px 4px 0;
+  padding: 4px 8px 4px 10px;
 `);
 
 const SizeChartTable = ({ unit }) => {
