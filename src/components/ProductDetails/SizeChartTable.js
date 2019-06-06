@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'react-emotion';
 import withProps from 'recompose/withProps';
 import { colors } from '../../utils/styles';
+import { isEmpty } from 'lodash/isEmpty';
 
 const ResponsiveTable = styled('div')`
   display: block;
@@ -19,24 +20,24 @@ const Table = styled('table')`
 `;
 
 const ThLeft = styled('th')`
-  padding: 4px 8px 4px 0;
+  padding: 4px 20px 4px 0;
   text-align: left;
 `;
 
 const ThBrand = styled('th')`
   background: ${colors.brand};
-  border-left: 1px solid #9d7cbf;
+  border-left: 1px solid #0083e8;
   color: ${colors.lightest};
   -webkit-font-smoothing: antialiased;
-  padding: 8px 0;
+  padding: 8px;
 `;
 
 const Tr = styled('tr')`
-  border-bottom: ${props => (props.last ? 0 : '1px solid #e0d6eb')};
+  border-bottom: ${props => (props.last ? 0 : '1px solid #F1F4F7')};
 `;
 
 const Td = styled('td')`
-  border-left: 1px solid #f5f3f7;
+  border-left: 1px solid #f1f4f7;
   padding: 8px 4px;
   text-align: center;
   vertical-align: top;
@@ -53,7 +54,7 @@ const SizeChartTable = ({ unit }) => {
   const Size = ({ children: value }) => (
     <span className={css({ margin: '0 3px' })}>
       {Math.round(value * multiplier * 10) / 10}
-      {unit === 'cm' ? '' : '"'}
+      {unit !== 'cm' && '"'}
     </span>
   );
 
