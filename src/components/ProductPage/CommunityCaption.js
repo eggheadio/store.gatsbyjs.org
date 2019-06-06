@@ -72,20 +72,20 @@ const Caption = styled(`div`)`
 `;
 
 const UserPhotoHint = styled(`div`)`
-  background: rgba(68, 34, 102, 0.9);
+  background: gray;
   border-radius: 0 0 ${radius.large}px ${radius.large}px;
   cursor: pointer;
   font-size: 0.9rem;
-  padding: ${spacing.sm}px ${spacing.lg}px;
   position: relative;
   width: 100%;
+  padding: ${spacing.sm}px ${spacing.lg}px;
 
   .minimized & {
     display: none;
   }
 
   span:last-child {
-    display: none;
+    //display: none;
   }
 
   &.expanded {

@@ -262,16 +262,17 @@ const ProductListingItem = props => {
                 <Image fluid={fluid} />
               </Preview>
               <Name>
-                {title} <span>{productType}</span>
+                {title}
+                <span>{productType}</span>
               </Name>
-              {description && (
+              {/* {description && (
                 <Description>
                   {cutDescriptionShort(
                     removeCareInstructions(description),
                     DESCRIPTION_LIMIT
                   )}
                 </Description>
-              )}
+              )} */}
               <PriceRow>
                 <Price>
                   <span>USD</span> ${price}

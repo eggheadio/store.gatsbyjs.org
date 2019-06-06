@@ -28,7 +28,6 @@ export const ProductThumbnailsContent = styled(`div`)`
   align-items: center;
   height: 100%;
   padding-left: ${spacing.md}px;
-
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: center;
     min-width: 100%;

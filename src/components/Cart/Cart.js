@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'react-emotion';
 import PropTypes from 'prop-types';
 
-import CartIcon from '../../assets/basket.svg';
-
 import {
   MdClose,
   MdShoppingBasket,

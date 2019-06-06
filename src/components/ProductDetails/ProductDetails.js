@@ -1,6 +1,7 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import SizeChartTable from './SizeChartTable';
+import EcoLeaf from '../../assets/eco-leaf.svg';
 import {
   Heading as BaseHeading,
   TextContainer,
@@ -83,7 +84,7 @@ class ProductDetails extends React.Component {
 
     return (
       <TextContainer>
-        <Heading>Product Details</Heading>
+        <Heading>T-Shirt Details</Heading>
         <Section id="size-chart">
           <SectionHeading>Size Chart</SectionHeading>
           <UnitSelector unit={units} setUnits={this.changeUnits} />
@@ -94,6 +95,49 @@ class ProductDetails extends React.Component {
             </strong>{' '}
             Send us an email support@egghead.io and we’ll see if we can help!
           </p>
+        </Section>
+        <Section id="materials">
+          <div
+            css={css({
+              display: 'flex',
+              alignItems: 'center',
+              img: {
+                marginRight: spacing.sm
+              },
+              marginBottom: spacing.lg
+            })}
+          >
+            <img src={EcoLeaf} alt="Leaf Icon" />
+            <strong>100% No Sweatshops & Eco-Friendly</strong>
+          </div>
+          <div
+            css={css({
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gridGap: '10px'
+            })}
+          >
+            <div>
+              <h3>Men's (Unisex)</h3>
+              <p>
+                <strong>Color:</strong> Charcoal-Black Triblend
+              </p>
+              <p>
+                <strong>Fabrication:</strong> 70% Airlume combed and ring-spun
+                cotton, 15% polyester, 15% rayon.
+              </p>
+            </div>
+            <div>
+              <h3>Women's</h3>
+              <p>
+                <strong>Color:</strong> Dark Grey Heather
+              </p>
+              <p>
+                <strong>Fabrication:</strong> 52% Airlume combed and ring-spun
+                cotton, 48% polyester.
+              </p>
+            </div>
+          </div>
         </Section>
       </TextContainer>
     );
