@@ -47,7 +47,7 @@ const Td = styled('td')`
   padding: 20px 4px;
   text-align: center;
   vertical-align: top;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 `;
 
 const TdLeft = withProps({
@@ -79,7 +79,6 @@ const SizeChartTable = ({ unit }) => {
             <ThBrand>XL</ThBrand>
             <ThBrand>2XL</ThBrand>
             <ThBrand>3XL</ThBrand>
-            <ThBrand>4XL</ThBrand>
           </tr>
           <Tr>
             <TdLeft>Men's</TdLeft>
@@ -104,9 +103,6 @@ const SizeChartTable = ({ unit }) => {
             <Td>
               <Size>54</Size>–<Size>57</Size>
             </Td>
-            <Td>
-              <Size>58</Size>–<Size>61</Size>
-            </Td>
           </Tr>
           <Tr last>
             <TdLeft>Women's</TdLeft>
@@ -117,7 +113,6 @@ const SizeChartTable = ({ unit }) => {
             <Td>10–14</Td>
             <Td>14–18</Td>
             <Td>22-24</Td>
-            <Td>-</Td>
           </Tr>
           {/* <Tr>
             <TdLeft>Women Body Length</TdLeft>
