@@ -57,17 +57,21 @@ const ProductPageTemplate = props => {
             />
             <meta
               property="og:image"
-              content={`https://og-image-react-egghead.now.sh/store/${title} - ${productType}?bgImage=${
+              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
                 site.siteMetadata.siteUrl
               }${image}`}
-              //content={`${site.siteMetadata.siteUrl}${image}`}
             />
             <meta property="og:image:alt" content={title} />
-            <meta property="og:image:width" content="600" />
-            <meta property="og:image:height" content="600" />
-
-            <meta name="twitter:card" content="summary" />
+            {/* <meta property="og:image:width" content="600" />
+            <meta property="og:image:height" content="600" /> */}
+            <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:site" content="@gatsbyjs" />
+            <meta
+              name="twitter:image"
+              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
+                site.siteMetadata.siteUrl
+              }${image}`}
+            />
           </Helmet>
           <ProductPage
             product={product}
