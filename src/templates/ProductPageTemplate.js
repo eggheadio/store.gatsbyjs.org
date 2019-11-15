@@ -46,7 +46,7 @@ const ProductPageTemplate = props => {
             />
             <meta property="og:locale" content="en" />
             <meta property="og:title" content={title} />
-            <meta property="og:site_name" content="Gatsby Swag Store" />
+            <meta property="og:site_name" content="egghead.io Swag Store" />
             <meta property="og:description" content={description} />
             <meta property="og:image:alt" content={title} />
             <meta
