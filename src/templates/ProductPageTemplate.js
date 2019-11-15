@@ -56,6 +56,12 @@ const ProductPageTemplate = props => {
               content={isOutOfStock ? 'Out of stock' : 'In stock'}
             />
             <meta
+              property="image"
+              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
+                site.siteMetadata.siteUrl
+              }${image}`}
+            />
+            <meta
               property="og:image"
               content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
                 site.siteMetadata.siteUrl
