@@ -1,22 +1,22 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
+import React from 'react'
+import {graphql} from 'gatsby'
+import Helmet from 'react-helmet'
 
-import InterfaceContext from '../context/InterfaceContext';
-import ProductPage from '../components/ProductPage';
+import InterfaceContext from '../context/InterfaceContext'
+import ProductPage from '../components/ProductPage'
 
 const removeCareInstructions = desc =>
-  desc.split(/Care Instructions/).slice(0, 1);
+  desc.split(/Care Instructions/).slice(0, 1)
 
 const ProductPageTemplate = props => {
   const {
     site,
     shopifyProduct: product,
-    shopifyProduct: { title, description: fullDescription, handle }
-  } = props.data;
+    shopifyProduct: {title, description: fullDescription, handle}
+  } = props.data
 
-  const description = removeCareInstructions(fullDescription);
-  const image = product.images[0].localFile.childImageSharp.fluid.src;
+  const description = removeCareInstructions(fullDescription)
+  const image = product.images[0].localFile.childImageSharp.fluid.src
 
   return (
     <InterfaceContext.Consumer>
@@ -65,10 +65,10 @@ const ProductPageTemplate = props => {
         </>
       )}
     </InterfaceContext.Consumer>
-  );
-};
+  )
+}
 
-export default ProductPageTemplate;
+export default ProductPageTemplate
 
 export const query = graphql`
   query($handle: String!) {
@@ -79,11 +79,12 @@ export const query = graphql`
         description
       }
     }
-    shopifyProduct(handle: { eq: $handle }) {
+    shopifyProduct(handle: {eq: $handle}) {
       id
       title
       handle
       description
+      descriptionHtml
       productType
       variants {
         shopifyId
@@ -104,4 +105,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`
