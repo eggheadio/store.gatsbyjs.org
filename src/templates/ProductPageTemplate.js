@@ -50,9 +50,9 @@ const ProductPageTemplate = props => {
             <meta property="og:description" content={description} />
             <meta property="twitter:label1" content="Price" />
             <meta property="twitter.data1" content={`$${variants[0].price}`} />
-            <meta property="twitter:label1" content="Availability" />
+            <meta property="twitter:label2" content="Availability" />
             <meta
-              property="twitter.data1"
+              property="twitter.data2"
               content={isOutOfStock ? 'Out of stock' : 'In stock'}
             />
             <meta
