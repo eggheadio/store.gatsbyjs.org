@@ -127,7 +127,7 @@ const ProductSpecs = props => {
       {hasVariants && isPoster ? (
         <Variants>
           {variants.map(variant => (
-            <Variant>
+            <Variant key={variant.id}>
               <span>{variant.title}</span>
               <div className="price">
                 <span>USD</span> ${variant.price}

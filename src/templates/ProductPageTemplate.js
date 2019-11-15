@@ -12,12 +12,19 @@ const ProductPageTemplate = props => {
   const {
     site,
     shopifyProduct: product,
-    shopifyProduct: {title, description: fullDescription, handle}
+    shopifyProduct: {
+      title,
+      description: fullDescription,
+      handle,
+      productType,
+      variants
+    }
   } = props.data
 
   const description = removeCareInstructions(fullDescription)
   const image = product.images[0].localFile.childImageSharp.fluid.src
-
+  const hasVariants = variants.length > 1
+  const isOutOfStock = !hasVariants && !variants[0].availableForSale
   return (
     <InterfaceContext.Consumer>
       {({
@@ -41,11 +48,19 @@ const ProductPageTemplate = props => {
             <meta property="og:title" content={title} />
             <meta property="og:site_name" content="Gatsby Swag Store" />
             <meta property="og:description" content={description} />
-
-            {/* TODO: add the image */}
+            <meta property="twitter:label1" content="Price" />
+            <meta property="twitter.data1" content={`$${variants[0].price}`} />
+            <meta property="twitter:label1" content="Availability" />
+            <meta
+              property="twitter.data1"
+              content={isOutOfStock ? 'Out of stock' : 'In stock'}
+            />
             <meta
               property="og:image"
-              content={`${site.siteMetadata.siteUrl}${image}`}
+              content={`https://og-image-react-egghead.now.sh/store/${title} - ${productType}?bgImage=${
+                site.siteMetadata.siteUrl
+              }${image}`}
+              //content={`${site.siteMetadata.siteUrl}${image}`}
             />
             <meta property="og:image:alt" content={title} />
             <meta property="og:image:width" content="600" />
@@ -91,6 +106,7 @@ export const query = graphql`
         title
         price
         availableForSale
+        id
       }
       images {
         id
