@@ -48,6 +48,16 @@ const ProductPageTemplate = props => {
             <meta property="og:title" content={title} />
             <meta property="og:site_name" content="Gatsby Swag Store" />
             <meta property="og:description" content={description} />
+            <meta property="og:image:alt" content={title} />
+            <meta
+              property="og:image"
+              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
+                site.siteMetadata.siteUrl
+              }${image}`}
+            />
+            <meta property="twitter:title" content={title} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@gatsbyjs" />
             <meta property="twitter:label1" content="Price" />
             <meta property="twitter.data1" content={`$${variants[0].price}`} />
             <meta property="twitter:label2" content="Availability" />
@@ -55,23 +65,6 @@ const ProductPageTemplate = props => {
               property="twitter.data2"
               content={isOutOfStock ? 'Out of stock' : 'In stock'}
             />
-            <meta
-              property="image"
-              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
-                site.siteMetadata.siteUrl
-              }${image}`}
-            />
-            <meta
-              property="og:image"
-              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
-                site.siteMetadata.siteUrl
-              }${image}`}
-            />
-            <meta property="og:image:alt" content={title} />
-            {/* <meta property="og:image:width" content="600" />
-            <meta property="og:image:height" content="600" /> */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:site" content="@gatsbyjs" />
             <meta
               name="twitter:image"
               content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
