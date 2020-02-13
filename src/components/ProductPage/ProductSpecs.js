@@ -128,8 +128,8 @@ const ProductSpecs = props => {
   const isForPreorder = handle === 'party-corgi-tank-top'
   // calculate shipping date for corgi tank tops
   const now = new Date()
-  const then = new Date('February 28, 2020') // sale closes on 2/28
-  const gap = then.getTime() - now.getTime()
+  const preSaleEndsDate = new Date('February 28, 2020') // sale ends on 2/28
+  const gap = preSaleEndsDate.getTime() - now.getTime()
   const gapInDays = Math.floor(gap / (1000 * 60 * 60 * 24))
   const deliveryTimeFromNowInDays = 49 + gapInDays // 7 weeks === 49 days + days left until production starts
   const deliveryTimeFromNowInWeeks = Math.floor(deliveryTimeFromNowInDays / 7) // convert to weeks
@@ -142,13 +142,17 @@ const ProductSpecs = props => {
         <Markdown escapeHtml={false} source={descriptionHtml} />
       </Description>
       <br />
-      {isForPreorder && deliveryTimeFromNowInWeeks > 0 && (
+      {!isForPreorder && (
         <PreOrder>
           Ships in{' '}
-          <b>
-            {deliveryTimeFromNowInWeeks} week
-            {deliveryTimeFromNowInWeeks > 1 && 's'}
-          </b>
+          {gapInDays > 0 ? (
+            <b>
+              {deliveryTimeFromNowInWeeks} week
+              {deliveryTimeFromNowInWeeks > 1 && 's'}
+            </b>
+          ) : (
+            <b>7 weeks</b>
+          )}
         </PreOrder>
       )}
       {hasVariants && isPoster ? (
