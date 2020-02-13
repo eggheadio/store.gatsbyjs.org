@@ -22,10 +22,10 @@ import Link from '../shared/Link'
 const Form = styled(`form`)`
   display: flex;
   flex-direction: column;
-  padding: ${spacing['2xl']}px ${spacing.md}px 0;
+  padding: ${spacing['md']}px ${spacing.md}px 0;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
+    padding: ${spacing['md']}px ${spacing.xl}px 0;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {

@@ -101,29 +101,56 @@ const Variant = styled(`div`)`
   }
 `
 
+const PreOrder = styled(`div`)`
+  padding: 1rem;
+  background: #fafafa;
+  margin-bottom: 2rem;
+`
+
 const removeCareInstructions = desc =>
   desc.split(/Care Instructions/).slice(0, 1)
 
 const ProductSpecs = props => {
   const {
-    product: {title, description, descriptionHtml, productType, variants}
+    product: {
+      title,
+      description,
+      handle,
+      descriptionHtml,
+      productType,
+      variants
+    }
   } = props
 
   const hasVariants = variants.length > 1
-  const isPoster = productType === 'poster'
-
   const {price} = variants[0]
+  const isPoster = productType === 'poster'
+  const isForPreorder = handle === 'party-corgi-tank-top'
+  // calculate shipping date for corgi tank tops
+  const now = new Date()
+  const then = new Date('February 28, 2020') // sale closes on 2/28
+  const gap = then.getTime() - now.getTime()
+  const gapInDays = Math.floor(gap / (1000 * 60 * 60 * 24))
+  const deliveryTimeFromNowInDays = 49 + gapInDays // 7 weeks === 49 days + days left until production starts
+  const deliveryTimeFromNowInWeeks = Math.floor(deliveryTimeFromNowInDays / 7) // convert to weeks
 
   return (
     <ProductSpecsRoot>
       <Name>{title}</Name>
       <Type>{productType}</Type>
-
       <Description>
         <Markdown escapeHtml={false} source={descriptionHtml} />
       </Description>
       <br />
-
+      {isForPreorder && deliveryTimeFromNowInWeeks > 0 && (
+        <PreOrder>
+          Ships in{' '}
+          <b>
+            {deliveryTimeFromNowInWeeks} week
+            {deliveryTimeFromNowInWeeks > 1 && 's'}
+          </b>
+        </PreOrder>
+      )}
       {hasVariants && isPoster ? (
         <Variants>
           {variants.map(variant => (
