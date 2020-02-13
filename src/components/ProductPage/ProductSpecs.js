@@ -142,7 +142,7 @@ const ProductSpecs = props => {
         <Markdown escapeHtml={false} source={descriptionHtml} />
       </Description>
       <br />
-      {!isForPreorder && (
+      {isForPreorder && (
         <PreOrder>
           Ships in{' '}
           {gapInDays > 0 ? (
