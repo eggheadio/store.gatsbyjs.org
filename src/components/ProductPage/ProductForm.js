@@ -7,7 +7,7 @@ import {
   MdErrorOutline,
   MdShoppingCart,
   MdArrowForward,
-  MdSentimentDissatisfied
+  MdSentimentDissatisfied,
 } from 'react-icons/md'
 
 import {FiShoppingBag} from 'react-icons/fi'
@@ -116,7 +116,7 @@ class ProductForm extends Component {
     variant:
       this.props.variants.length === 1 ? this.props.variants[0].shopifyId : '',
     quantity: 1,
-    errors: []
+    errors: [],
   }
 
   handleChange = event => {
@@ -126,7 +126,7 @@ class ProductForm extends Component {
       const errors = this.state.errors
 
       const errorIdx = errors.findIndex(
-        error => error.field === event.target.name
+        error => error.field === event.target.name,
       )
 
       errors.splice(errorIdx, 1)
@@ -147,14 +147,14 @@ class ProductForm extends Component {
     if (this.state.quantity < 1) {
       errors.push({
         field: 'quantity',
-        msg: 'Choose a <b>quantity</b> of 1 or more.'
+        msg: 'Choose a <b>quantity</b> of 1 or more.',
       })
     }
 
     if (this.state.variant === '' || this.state.variant === '.') {
       errors.push({
         field: 'variant',
-        msg: 'Please select a <b>size</b>.'
+        msg: 'Please select a <b>size</b>.',
       })
     }
 
@@ -169,11 +169,12 @@ class ProductForm extends Component {
   render() {
     const {
       variants,
-      product: {productType}
+      product: {productType},
     } = this.props
     const {errors} = this.state
 
     const hasVariants = variants.length > 1
+    const isShirt = productType === 't-shirt'
     const isPoster = productType === 'poster'
 
     /*
@@ -217,7 +218,7 @@ class ProductForm extends Component {
                 <SizeFieldset>
                   <Label htmlFor="variant">
                     {isPoster ? `Variants` : `Style & Size`}
-                    {!isPoster && (
+                    {isShirt && (
                       <Link to="/product-details" aria-label="Size Chart">
                         <MdInfoOutline />
                         <span>Size Chart</span>
@@ -255,7 +256,7 @@ class ProductForm extends Component {
               <span>{isOutOfStock ? 'Out of Stock' : 'Add to Cart'}</span>
               {isOutOfStock ? <MdSentimentDissatisfied /> : <MdArrowForward />}
             </AddToCartButton>
-            {hasVariants && !isPoster && (
+            {hasVariants && isShirt && (
               <InfoLinks>
                 <Link to="/product-details#materials">
                   <span>Materials & Sizes</span>
@@ -271,7 +272,7 @@ class ProductForm extends Component {
 
 ProductForm.propTypes = {
   id: PropTypes.string.isRequired,
-  variants: PropTypes.array.isRequired
+  variants: PropTypes.array.isRequired,
 }
 
 export default ProductForm
