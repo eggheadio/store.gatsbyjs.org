@@ -8,33 +8,14 @@ import ProductListingItem from './ProductListingItem';
 import { breakpoints, spacing } from '../../utils/styles';
 
 const ProductListingContainer = styled(`div`)`
+  display: grid;
+  grid-gap: 30px;
+  padding: 30px;
 
-display: grid;
-grid-gap: 30px;
-padding: 30px;
-
-@media (min-width: ${breakpoints.desktop}px) {
-grid-template-columns: repeat(auto-fit, minmax(350px, 1fr) );
-}
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr) );
-
-  //  display: flex;
-  //  justify-content: center;
-  //  padding: ${spacing.lg}px;
-  //  flex-direction: column;
-
-  //  @media (min-width: ${breakpoints.tablet}px) {
-  //   flex-direction: row;
-  //   flex-wrap: wrap;
-  //  }
-
-  // @media (min-width: ${breakpoints.desktop}px) {
-    
-  //   flex-direction: row;
-  //   flex-wrap: wrap;
-  //   // padding: ${spacing['2xl']}px;
-  // }
-
+  @media (min-width: ${breakpoints.desktop}px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 `;
 
 const query = graphql`
