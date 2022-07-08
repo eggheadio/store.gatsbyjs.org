@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'react-emotion'
-import Markdown from 'react-markdown'
-import {breakpoints, colors, fonts, spacing} from '../../utils/styles'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import Markdown from 'react-markdown';
+import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
   padding: 0 ${spacing.md}px;
@@ -11,7 +11,7 @@ const ProductSpecsRoot = styled(`div`)`
   @media (min-width: ${breakpoints.tablet}px) {
     padding: ${spacing['2xl']}px ${spacing.md}px 0;
   }
-`
+`;
 
 const Name = styled(`h1`)`
   display: flex;
@@ -27,7 +27,7 @@ const Name = styled(`h1`)`
     margin-top: ${spacing.lg}px;
   }
   margin-top: ${spacing['3xl']}px;
-`
+`;
 
 const Type = styled(`span`)`
   font-family: ${fonts.heading};
@@ -38,7 +38,7 @@ const Type = styled(`span`)`
   margin: 0;
   margin-top: ${spacing.md}px;
   line-height: 0;
-`
+`;
 
 const Description = styled(`div`)`
   color: ${colors.text};
@@ -47,7 +47,7 @@ const Description = styled(`div`)`
   a {
     color: ${colors.brand};
   }
-`
+`;
 
 const Price = styled(`div`)`
   display: flex;
@@ -64,7 +64,7 @@ const Price = styled(`div`)`
     font-size: 70%;
     color: ${colors.textLight};
   }
-`
+`;
 
 const Variants = styled(`div`)`
   width: 100%;
@@ -74,7 +74,7 @@ const Variants = styled(`div`)`
   }
   display: flex;
   align-items: center;
-`
+`;
 
 const Variant = styled(`div`)`
   margin-top: ${spacing['md']}px;
@@ -99,16 +99,16 @@ const Variant = styled(`div`)`
     color: ${colors.text};
     font-family: ${fonts.heading};
   }
-`
+`;
 
 const PreOrder = styled(`div`)`
   padding: 1rem;
   background: #fafafa;
   margin-bottom: 2rem;
-`
+`;
 
 const removeCareInstructions = desc =>
-  desc.split(/Care Instructions/).slice(0, 1)
+  desc.split(/Care Instructions/).slice(0, 1);
 
 const ProductSpecs = props => {
   const {
@@ -120,19 +120,19 @@ const ProductSpecs = props => {
       productType,
       variants
     }
-  } = props
+  } = props;
 
-  const hasVariants = variants.length > 1
-  const {price} = variants[0]
-  const isPoster = productType === 'poster'
-  const isForPreorder = handle === 'party-corgi-tank-top'
+  const hasVariants = variants.length > 1;
+  const { price } = variants[0];
+  const isPoster = productType === 'poster';
+  const isForPreorder = handle === 'party-corgi-tank-top';
   // calculate shipping date for corgi tank tops
-  const now = new Date()
-  const preSaleEndsDate = new Date('February 28, 2020') // sale ends on 2/28
-  const gap = preSaleEndsDate.getTime() - now.getTime()
-  const gapInDays = Math.floor(gap / (1000 * 60 * 60 * 24))
-  const deliveryTimeFromNowInDays = 49 + gapInDays // 7 weeks === 49 days + days left until production starts
-  const deliveryTimeFromNowInWeeks = Math.floor(deliveryTimeFromNowInDays / 7) // convert to weeks
+  const now = new Date();
+  const preSaleEndsDate = new Date('February 28, 2020'); // sale ends on 2/28
+  const gap = preSaleEndsDate.getTime() - now.getTime();
+  const gapInDays = Math.floor(gap / (1000 * 60 * 60 * 24));
+  const deliveryTimeFromNowInDays = 49 + gapInDays; // 7 weeks === 49 days + days left until production starts
+  const deliveryTimeFromNowInWeeks = Math.floor(deliveryTimeFromNowInDays / 7); // convert to weeks
 
   return (
     <ProductSpecsRoot>
@@ -172,11 +172,11 @@ const ProductSpecs = props => {
         </Price>
       )}
     </ProductSpecsRoot>
-  )
-}
+  );
+};
 
 ProductSpecs.propTypes = {
   product: PropTypes.object.isRequired
-}
+};
 
-export default ProductSpecs
+export default ProductSpecs;

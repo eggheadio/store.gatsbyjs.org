@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import withProps from 'recompose/withProps';
 import { colors } from '../../utils/styles';
 import { isEmpty } from 'lodash/isEmpty';

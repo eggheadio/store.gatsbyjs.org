@@ -16,11 +16,13 @@ module.exports = {
       }
     },
     'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-image',
     {
       resolve: 'gatsby-source-shopify',
       options: {
-        shopName: process.env.SHOPIFY_STORE_NAME,
-        accessToken: process.env.SHOPIFY_ACCESS_TOKEN
+        storeUrl: process.env.SHOPIFY_STORE_NAME,
+        password: process.env.SHOPIFY_ADMIN_PASSWORD
       }
     },
     'gatsby-plugin-react-helmet',

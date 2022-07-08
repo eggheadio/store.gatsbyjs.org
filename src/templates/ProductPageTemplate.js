@@ -1,12 +1,12 @@
-import React from 'react'
-import {graphql} from 'gatsby'
-import Helmet from 'react-helmet'
+import React from 'react';
+import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 
-import InterfaceContext from '../context/InterfaceContext'
-import ProductPage from '../components/ProductPage'
+import InterfaceContext from '../context/InterfaceContext';
+import ProductPage from '../components/ProductPage';
 
 const removeCareInstructions = desc =>
-  desc.split(/Care Instructions/).slice(0, 1)
+  desc.split(/Care Instructions/).slice(0, 1);
 
 const ProductPageTemplate = props => {
   const {
@@ -19,12 +19,13 @@ const ProductPageTemplate = props => {
       productType,
       variants
     }
-  } = props.data
+  } = props.data;
 
-  const description = removeCareInstructions(fullDescription)
-  const image = product.images[0].localFile.childImageSharp.fluid.src
-  const hasVariants = variants.length > 1
-  const isOutOfStock = !hasVariants && !variants[0].availableForSale
+  const description = removeCareInstructions(fullDescription);
+  const image = product.images[0].gatsbyImageData;
+  const imageSrc = product.images[0].src;
+  const hasVariants = variants.length > 1;
+  const isOutOfStock = !hasVariants && !variants[0].availableForSale;
   return (
     <InterfaceContext.Consumer>
       {({
@@ -51,9 +52,9 @@ const ProductPageTemplate = props => {
             <meta property="og:image:alt" content={title} />
             <meta
               property="og:image"
-              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
-                site.siteMetadata.siteUrl
-              }${image}`}
+              content={`https://og-image-react-egghead.now.sh/store/${encodeURI(
+                title
+              )}?bgImage=${imageSrc}`}
             />
             <meta property="twitter:title" content={title} />
             <meta name="twitter:card" content="summary_large_image" />
@@ -67,9 +68,9 @@ const ProductPageTemplate = props => {
             />
             <meta
               name="twitter:image"
-              content={`https://og-image-react-egghead.now.sh/store/${title}?bgImage=${
-                site.siteMetadata.siteUrl
-              }${image}`}
+              content={`https://og-image-react-egghead.now.sh/store/${encodeURI(
+                title
+              )}?bgImage=${imageSrc}`}
             />
           </Helmet>
           <ProductPage
@@ -83,10 +84,10 @@ const ProductPageTemplate = props => {
         </>
       )}
     </InterfaceContext.Consumer>
-  )
-}
+  );
+};
 
-export default ProductPageTemplate
+export default ProductPageTemplate;
 
 export const query = graphql`
   query($handle: String!) {
@@ -97,7 +98,7 @@ export const query = graphql`
         description
       }
     }
-    shopifyProduct(handle: {eq: $handle}) {
+    shopifyProduct(handle: { eq: $handle }) {
       id
       title
       handle
@@ -114,14 +115,9 @@ export const query = graphql`
       images {
         id
         altText
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 910, maxHeight: 910) {
-              ...GatsbyImageSharpFluid_noBase64
-            }
-          }
-        }
+        src
+        gatsbyImageData
       }
     }
   }
-`
+`;

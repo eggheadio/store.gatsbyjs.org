@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import ProductListingHeader from './ProductListingHeader';
 import ProductListingItem from './ProductListingItem';
@@ -49,6 +49,7 @@ const query = graphql`
           description
           productType
           variants {
+            id
             shopifyId
             title
             price
@@ -56,13 +57,9 @@ const query = graphql`
           }
           images {
             id
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 910, maxHeight: 910) {
-                  ...GatsbyImageSharpFluid_noBase64
-                }
-              }
-            }
+            src
+            altText
+            gatsbyImageData
           }
         }
       }

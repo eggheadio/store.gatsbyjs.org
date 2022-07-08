@@ -1,6 +1,6 @@
 import React, { Component, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Eggo from '../../assets/eggo.svg';
 import PartyEggo from '../../assets/eggo-party.png';

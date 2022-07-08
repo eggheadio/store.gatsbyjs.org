@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 import Footer from './Footer';
 import {
@@ -19,8 +20,6 @@ const {
 } = dimensions;
 
 const PageContentRoot = styled(`main`)`
-  //background: ${colors.brandLighter};
-  //background: #fafafa;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

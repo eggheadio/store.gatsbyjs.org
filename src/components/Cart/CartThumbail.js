@@ -1,11 +1,11 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import styled from 'react-emotion';
-import Image from 'gatsby-image';
+import styled from '@emotion/styled';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { colors, radius } from '../../utils/styles';
 
-const CartThumbailRoot = styled(Image)`
+const CartThumbailRoot = styled(GatsbyImage)`
   border: 1px solid ${colors.brandLight};
   border-radius: ${radius.default}px;
   height: 36px;
@@ -18,15 +18,11 @@ const CartThumbail = ({
   fallback,
   ...imageProps
 }) => {
-  const image = shopifyImages.find(({ id }) => id === imageId);
+  const image = shopifyImages.find(({ shopifyId }) => shopifyId === imageId);
 
-  if (image) {
-    imageProps.fluid = image.localFile.childImageSharp.fluid;
-  } else {
-    imageProps.src = fallback;
-  }
-
-  return <CartThumbailRoot {...imageProps} />;
+  return (
+    <CartThumbailRoot image={image.gatsbyImageData} alt={image.altText || ''} />
+  );
 };
 
 export default props => (
@@ -38,13 +34,9 @@ export default props => (
             node {
               images {
                 id
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
+                shopifyId
+                src
+                gatsbyImageData
               }
             }
           }
