@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import Image from 'gatsby-image';
 import Link from '../shared/Link';
 
 import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const THUMBNAIL_SIZE = '60px';
 
@@ -35,7 +36,7 @@ export const ProductThumbnailsContent = styled(`div`)`
   }
 `;
 
-export const Thumbnail = styled(Link)`
+export const Thumbnail = styled(`a`)`
   height: ${THUMBNAIL_SIZE};
   margin-right: ${spacing.sm}px;
   width: ${THUMBNAIL_SIZE};
@@ -65,20 +66,15 @@ class ProductThumbnails extends Component {
           <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
               {images.map((image, idx) => {
-                const {
-                  id,
-                  localFile: {
-                    childImageSharp: { fluid }
-                  }
-                } = image;
+                const { id, gatsbyImageData, altText, src } = image;
 
                 return (
                   <Thumbnail
                     key={id}
                     onClick={this.handleClick(image, featureProductImage)}
-                    to={fluid.src}
+                    href={src}
                   >
-                    <Image fluid={fluid} />
+                    <GatsbyImage image={gatsbyImageData} alt={altText || ''} />
                   </Thumbnail>
                 );
               })}

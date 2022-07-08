@@ -2,7 +2,7 @@ import React from 'react';
 import Client from 'shopify-buy';
 
 const client = Client.buildClient({
-  domain: 'eggheadio.myshopify.com',
+  domain: process.env.SHOPIFY_STORE_NAME,
   storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN
 });
 

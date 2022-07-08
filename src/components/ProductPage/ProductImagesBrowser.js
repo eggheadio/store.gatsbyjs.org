@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
-import styled, { keyframes } from 'react-emotion';
+import styled from '@emotion/styled';
+import { keyframes, css } from '@emotion/core';
 import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
 import CommunityCaption from './CommunityCaption';
@@ -19,6 +20,7 @@ import {
   spacing,
   dimensions
 } from '../../utils/styles';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const IMAGE_CHANGE_ANIM_DURATION = 250;
 
@@ -278,12 +280,7 @@ class ProductImagesBrowser extends Component {
     const { images, position, imageFeatured, toggle } = this.props;
     const image = imageFeatured ? imageFeatured : images[0];
 
-    const {
-      altText,
-      localFile: {
-        childImageSharp: { fluid }
-      }
-    } = image;
+    const { altText, gatsbyImageData, src } = image;
 
     const { imageBoxHeight, superZoom } = this.state;
 
@@ -298,20 +295,20 @@ class ProductImagesBrowser extends Component {
         </Actions>
 
         <ZoomArea
-          innerRef={container => {
+          ref={container => {
             this.zoomArea = container;
           }}
         >
           <ImageBox
             onClick={this.toggleZoomRatio}
-            href={fluid.src}
+            href={src}
             superZoom={superZoom}
             width={imageBoxHeight}
-            innerRef={image => {
+            ref={image => {
               this.imageBox = image;
             }}
           >
-            <Image fluid={fluid} />
+            <GatsbyImage image={gatsbyImageData} alt="" />
           </ImageBox>
           {altText && (
             <CommunityCaption caption={altText} superZoom={superZoom} />

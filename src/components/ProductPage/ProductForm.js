@@ -1,23 +1,23 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 
 import {
   MdInfoOutline,
   MdErrorOutline,
   MdShoppingCart,
   MdArrowForward,
-  MdSentimentDissatisfied,
-} from 'react-icons/md'
+  MdSentimentDissatisfied
+} from 'react-icons/md';
 
-import {FiShoppingBag} from 'react-icons/fi'
+import { FiShoppingBag } from 'react-icons/fi';
 
-import {Fieldset, Input, Label, Select, Submit} from '../shared/FormElements'
+import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 
-import {breakpoints, colors, spacing, radius} from '../../utils/styles'
+import { breakpoints, colors, spacing, radius } from '../../utils/styles';
 
-import StoreContext from '../../context/StoreContext'
-import Link from '../shared/Link'
+import StoreContext from '../../context/StoreContext';
+import Link from '../shared/Link';
 
 const Form = styled(`form`)`
   display: flex;
@@ -31,14 +31,14 @@ const Form = styled(`form`)`
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: flex-start;
   }
-`
+`;
 
 const Errors = styled(`div`)`
   display: ${props => (props.show ? 'flex' : 'none')};
   flex-direction: row;
   margin-bottom: ${spacing.xs}px;
   width: 100%;
-`
+`;
 
 const ErrorSign = styled(`div`)`
   align-items: center;
@@ -53,7 +53,7 @@ const ErrorSign = styled(`div`)`
     height: 20px;
     width: 20px;
   }
-`
+`;
 
 const ErrorMsgs = styled(`ul`)`
   border: 1px dashed ${colors.error};
@@ -64,7 +64,7 @@ const ErrorMsgs = styled(`ul`)`
   margin: 0;
   padding: ${spacing.xs}px;
   padding-left: ${spacing.xl}px;
-`
+`;
 
 const QtyFieldset = styled(Fieldset)`
   flex-basis: 30px;
@@ -77,7 +77,7 @@ const QtyFieldset = styled(Fieldset)`
     padding: ${spacing.sm}px ${spacing.sm}px;
     text-align: center;
   }
-`
+`;
 
 const SizeFieldset = styled(Fieldset)`
   flex-basis: calc(100% - ${spacing.md}px - 70px);
@@ -85,11 +85,11 @@ const SizeFieldset = styled(Fieldset)`
   ${Label} {
     justify-content: space-between;
   }
-`
+`;
 
 const Fields = styled.div`
   display: flex;
-`
+`;
 
 const InfoLinks = styled(`div`)`
   align-items: center;
@@ -97,7 +97,7 @@ const InfoLinks = styled(`div`)`
   justify-content: center;
   margin-top: ${spacing.lg}px;
   width: 100%;
-`
+`;
 
 const AddToCartButton = styled(Submit)`
   span {
@@ -109,84 +109,84 @@ const AddToCartButton = styled(Submit)`
   }
   height: ${props => (props.fullWidth ? 'auto' : '')};
   width: ${props => (props.fullWidth ? '100%' : 'auto')};
-`
+`;
 
 class ProductForm extends Component {
   state = {
     variant:
       this.props.variants.length === 1 ? this.props.variants[0].shopifyId : '',
     quantity: 1,
-    errors: [],
-  }
+    errors: []
+  };
 
   handleChange = event => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (event.target.value) {
-      const errors = this.state.errors
+      const errors = this.state.errors;
 
       const errorIdx = errors.findIndex(
-        error => error.field === event.target.name,
-      )
+        error => error.field === event.target.name
+      );
 
-      errors.splice(errorIdx, 1)
+      errors.splice(errorIdx, 1);
 
       if (~errorIdx) {
-        this.setState({errors: errors})
+        this.setState({ errors: errors });
       }
     }
 
-    this.setState({[event.target.name]: event.target.value})
-  }
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   handleSubmit = callback => event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const errors = []
+    const errors = [];
 
     if (this.state.quantity < 1) {
       errors.push({
         field: 'quantity',
-        msg: 'Choose a <b>quantity</b> of 1 or more.',
-      })
+        msg: 'Choose a <b>quantity</b> of 1 or more.'
+      });
     }
 
     if (this.state.variant === '' || this.state.variant === '.') {
       errors.push({
         field: 'variant',
-        msg: 'Please select a <b>size</b>.',
-      })
+        msg: 'Please select a <b>size</b>.'
+      });
     }
 
     if (errors.length) {
-      this.setState({errors: errors})
-      return
+      this.setState({ errors: errors });
+      return;
     }
 
-    callback(this.state.variant, this.state.quantity)
-  }
+    callback(this.state.variant, this.state.quantity);
+  };
 
   render() {
     const {
       variants,
-      product: {productType},
-    } = this.props
-    const {errors} = this.state
+      product: { productType }
+    } = this.props;
+    const { errors } = this.state;
 
-    const hasVariants = variants.length > 1
-    const isShirt = productType === 't-shirt'
-    const isPoster = productType === 'poster'
+    const hasVariants = variants.length > 1;
+    const isShirt = productType === 't-shirt';
+    const isPoster = productType === 'poster';
 
     /*
      * For products without variants, we disable the whole Add to Cart button
      * and change the text. This flag prevents us from duplicating the logic in
      * multiple places.
      */
-    const isOutOfStock = !hasVariants && !variants[0].availableForSale
+    const isOutOfStock = !hasVariants && !variants[0].availableForSale;
 
     return (
       <StoreContext.Consumer>
-        {({addVariantToCart}) => (
+        {({ addVariantToCart }) => (
           <Form onSubmit={this.handleSubmit(addVariantToCart)} noValidate>
             <Errors show={errors.length}>
               <ErrorSign>
@@ -196,7 +196,7 @@ class ProductForm extends Component {
                 {errors.map(error => (
                   <li
                     key={error.field}
-                    dangerouslySetInnerHTML={{__html: error.msg}}
+                    dangerouslySetInnerHTML={{ __html: error.msg }}
                   />
                 ))}
               </ErrorMsgs>
@@ -266,13 +266,13 @@ class ProductForm extends Component {
           </Form>
         )}
       </StoreContext.Consumer>
-    )
+    );
   }
 }
 
 ProductForm.propTypes = {
   id: PropTypes.string.isRequired,
-  variants: PropTypes.array.isRequired,
-}
+  variants: PropTypes.array.isRequired
+};
 
-export default ProductForm
+export default ProductForm;

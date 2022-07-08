@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { MdShoppingCart, MdArrowForward } from 'react-icons/md';
 import UserContext from '../../context/UserContext';
@@ -243,12 +245,6 @@ const ProductListingItem = props => {
   } = props;
 
   const { price } = firstVariant;
-  const {
-    localFile: {
-      childImageSharp: { fluid }
-    }
-  } = firstImage;
-
   const freeWith =
     price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
 
@@ -259,7 +255,7 @@ const ProductListingItem = props => {
           <ProductListingItemLink to={`/product/${handle}`}>
             <Item>
               <Preview>
-                <Image fluid={fluid} />
+                <GatsbyImage image={firstImage.gatsbyImageData} alt={title} />
               </Preview>
               <Name>
                 {title}

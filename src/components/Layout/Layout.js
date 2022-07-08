@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { injectGlobal } from 'react-emotion';
+import styled from '@emotion/styled';
+import { Global, css } from '@emotion/core';
 
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
 import UserContext, { defaultUserContext } from '../../context/UserContext';
@@ -13,26 +14,33 @@ import ProductImagesBrowser from '../ProductPage/ProductImagesBrowser';
 import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
-import { breakpoints } from '../../utils/styles';
+import { breakpoints, colors } from '../../utils/styles';
 
 // Import DIN typeface
 import '../../fonts/din/din.css';
 
-injectGlobal`
-    html {
-      box-sizing: border-box;
-    }
-
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-
-    body {
-      -webkit-tap-highlight-color: rgba(0,0,0,.05)
-    }
-    h1 {
-      text-transform: uppercase;
-    }
+const globalStyles = css`
+  html {
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  body {
+    background: ${colors.lightest};
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    color: ${colors.text};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.375;
+    margin: 0 auto;
+  }
+  h1 {
+    text-transform: uppercase;
+  }
 `;
 
 const Viewport = styled(`div`)`
@@ -237,6 +245,7 @@ export default class Layout extends React.Component {
 
     return (
       <>
+        <Global styles={globalStyles} />
         <SiteMetadata />
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
